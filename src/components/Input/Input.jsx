@@ -1,11 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import React, { createRef } from "react";
+import { useEffect, useState } from "react";
 import s from "./Input.module.css";
+
+export const loginRef = createRef();
+
+export const passRef = createRef();
+
+export const repeatPassRef = createRef();
 
 export default function Input(props) {
   // login
   const [login, setLogin] = useState("");
-
-  const loginRef = useRef();
 
   const handleLogin = () => {
     setLogin(loginRef.current.value);
@@ -21,8 +26,6 @@ export default function Input(props) {
 
   const [pass, setPass] = useState("");
 
-  const passRef = useRef();
-
   const handlePassword = () => {
     setPass(passRef.current.value);
   };
@@ -33,27 +36,57 @@ export default function Input(props) {
   });
   //
 
-  return (
-    <div className={s.container}>
-      {props.placeholder === "Логин" ? (
-        <input
-          className={s.input}
-          type="text"
-          placeholder={props.placeholder}
-          ref={loginRef}
-          onChange={handleLogin}
-          value={login}
-        />
-      ) : (
-        <input
-          className={s.input}
-          type="password"
-          placeholder={props.placeholder}
-          ref={passRef}
-          onChange={handlePassword}
-          value={pass}
-        />
-      )}
-    </div>
-  );
+  // repeat password
+
+  const [repeatPass, setRepeatPass] = useState("");
+
+  const handleRepeatPassword = () => {
+    setRepeatPass(repeatPassRef.current.value);
+  };
+  useEffect(() => {
+    if (repeatPass !== "") {
+      console.log(repeatPass);
+    }
+  });
+
+  const getInputs = (value) => {
+    switch (value) {
+      case "Логин":
+        return (
+          <input
+            className={s.input}
+            type="text"
+            placeholder={props.placeholder}
+            ref={loginRef}
+            onChange={handleLogin}
+            value={login}
+          />
+        );
+      case "Пароль":
+        return (
+          <input
+            className={s.input}
+            type="password"
+            placeholder={props.placeholder}
+            ref={passRef}
+            onChange={handlePassword}
+            value={pass}
+          />
+        );
+      case "Повторите пароль":
+        return (
+          <input
+            className={s.input}
+            type="password"
+            placeholder={props.placeholder}
+            ref={repeatPassRef}
+            onChange={handleRepeatPassword}
+            value={repeatPass}
+          />
+        );
+      default:
+        break;
+    }
+  };
+  return getInputs(props.placeholder);
 }

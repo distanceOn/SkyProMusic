@@ -8,7 +8,7 @@ export default function Button(props) {
         return (
           <div>
             <NavLink to="/">
-              <button className={s.entry} type="button">
+              <button className={s.entry} type="button" onClick={props.onClick}>
                 {props.value}
               </button>
             </NavLink>
@@ -29,7 +29,11 @@ export default function Button(props) {
         return (
           <NavLink to="/">
             <div>
-              <button className={s.register_finish} type="button">
+              <button
+                className={s.register_finish}
+                type="button"
+                onClick={props.onClick}
+              >
                 {props.value}
               </button>
             </div>

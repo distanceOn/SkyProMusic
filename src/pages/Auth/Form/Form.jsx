@@ -2,8 +2,23 @@ import Logo from "../../../components/Imgs/Logo.png";
 import s from "./Form.module.css";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
+import {
+  useLoginMutation,
+  useSignupMutation,
+} from "../../../redux/services/api";
+import { enter, registration } from "../../../redux/events/authEvents";
 
 export default function Form(props) {
+  const [userLogin] = useLoginMutation();
+  const [userSignup] = useSignupMutation();
+
+  function onEnter() {
+    enter(userLogin);
+  }
+  function onRegistration() {
+    registration(userSignup);
+  }
+
   function getForm() {
     if (props.currentPath === "/login") {
       return (
@@ -17,7 +32,7 @@ export default function Form(props) {
           </div>
 
           <div className={s.buttons}>
-            <Button action="enter" value="Войти" />
+            <Button action="enter" value="Войти" onClick={onEnter} />
             <Button action="signup-start" value="Зарегистрироваться" />
           </div>
         </div>
@@ -35,7 +50,11 @@ export default function Form(props) {
           </div>
 
           <div className={s.buttons}>
-            <Button action="signup-finish" value="Зарегистрироваться" />
+            <Button
+              action="signup-finish"
+              value="Зарегистрироваться"
+              onClick={onRegistration}
+            />
           </div>
         </div>
       );
