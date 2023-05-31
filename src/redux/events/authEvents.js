@@ -1,6 +1,7 @@
 import { loginRef, passRef, repeatPassRef } from "../../components/Input/Input";
+import { setUser } from "../slices/authSlice";
 
-export const enter = async (userLogin) => {
+export const enter = async (userLogin, dispatch) => {
   if (loginRef.current.value === "" || passRef.current.value === "") {
     console.log("error");
     return;
@@ -11,7 +12,7 @@ export const enter = async (userLogin) => {
         password: passRef.current.value,
       });
       const responseData = response.data;
-      console.log(responseData);
+      dispatch(setUser(responseData));
     } catch (error) {
       console.log(error);
     }
