@@ -5,6 +5,7 @@ import Button from "../../../components/Button/Button";
 import {
   useLoginMutation,
   useSignupMutation,
+  useTokenMutation,
 } from "../../../redux/services/api";
 import { enter, registration } from "../../../redux/events/authEvents";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,7 @@ import { useEffect } from "react";
 export default function Form(props) {
   const [userLogin] = useLoginMutation();
   const [userSignup] = useSignupMutation();
+  const [userToken] = useTokenMutation();
 
   const dispatch = useDispatch();
   const user = useSelector(getUser);
@@ -25,10 +27,10 @@ export default function Form(props) {
   }, [user]);
 
   function onEnter() {
-    enter(userLogin, dispatch);
+    enter(userLogin, dispatch, userToken);
   }
   function onRegistration() {
-    registration(userSignup);
+    registration(userSignup, dispatch, userToken);
   }
 
   function getForm() {

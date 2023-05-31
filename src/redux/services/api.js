@@ -20,7 +20,14 @@ export const api = createApi({
         body,
       }),
     }),
+    token: builder.mutation({
+      query: (body) => ({
+        url: "user/token/",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useSignupMutation, useLoginMutation } = api;
+export const { useSignupMutation, useLoginMutation, useTokenMutation } = api;

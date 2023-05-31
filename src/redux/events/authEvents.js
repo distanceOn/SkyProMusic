@@ -1,25 +1,38 @@
 import { loginRef, passRef, repeatPassRef } from "../../components/Input/Input";
 import { setUser } from "../slices/authSlice";
 
-export const enter = async (userLogin, dispatch) => {
+const getToken = async (userToken, dispatch, logData, responseData) => {
+  try {
+    const tokenData = await userToken(logData);
+
+    dispatch(setUser({ ...responseData, token: tokenData.data }));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const enter = async (userLogin, dispatch, userToken) => {
   if (loginRef.current.value === "" || passRef.current.value === "") {
     console.log("error");
     return;
   } else {
     try {
-      const response = await userLogin({
+      const logData = {
         email: loginRef.current.value,
         password: passRef.current.value,
-      });
+      };
+
+      const response = await userLogin(logData);
       const responseData = response.data;
-      dispatch(setUser(responseData));
+
+      await getToken(userToken, dispatch, logData, responseData);
     } catch (error) {
       console.log(error);
     }
   }
 };
 
-export const registration = async (userSignup) => {
+export const registration = async (userSignup, dispatch, userToken) => {
   if (
     loginRef.current.value === "" ||
     passRef.current.value === "" ||
@@ -29,13 +42,15 @@ export const registration = async (userSignup) => {
     return;
   } else if (passRef.current.value === repeatPassRef.current.value) {
     try {
-      const response = await userSignup({
+      const logData = {
         email: loginRef.current.value,
         password: passRef.current.value,
         username: loginRef.current.value,
-      });
+      };
+      const response = await userSignup(logData);
       const responseData = response.data;
-      console.log(responseData);
+
+      await getToken(userToken, dispatch, logData, responseData);
     } catch (error) {
       console.log(error);
     }
