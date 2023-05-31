@@ -1,0 +1,46 @@
+.register {
+  width: 278px;
+  height: 52px;
+  border: 1px solid #d0cece;
+  border-radius: 6px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  background-color: transparent;
+  letter-spacing: -0.003em;
+
+  color: #000000;
+  outline: none;
+}
+.register:hover {
+  background: #f4f5f6;
+}
+.register:active {
+  background: #d9d9d9;
+}
+
+.entry {
+  width: 278px;
+  height: 52px;
+  background: #580ea2;
+  border-radius: 6px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+  letter-spacing: -0.003em;
+
+  color: #ffffff;
+  outline: none;
+  border: transparent;
+}
+.entry:hover {
+  background: #3f007d;
+}
+.entry:active {
+  background: #271a58;
+}

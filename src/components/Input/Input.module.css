@@ -1,0 +1,20 @@
+.input {
+  width: 278px;
+  height: 32px;
+  box-sizing: border-box;
+
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #d0cece;
+}
+.input::placeholder {
+  font-family: 'StratosSkyeng';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+  letter-spacing: -0.003em;
+
+  color: #e1e1e1;
+}
