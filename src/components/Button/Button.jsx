@@ -4,26 +4,33 @@ import s from "./Button.module.css";
 export default function Button(props) {
   const button = (value) => {
     switch (value) {
-      case "Войти":
+      case "enter":
         return (
           <div>
             <NavLink to="/">
-              <button
-                className={s.entry}
-                type="button"
-                onClick={props.onAuthButtonClick}
-              >
-                {value}
+              <button className={s.entry} type="button">
+                {props.value}
               </button>
             </NavLink>
           </div>
         );
-      case "Зарегистрироваться":
+      case "signup-start":
         return (
           <NavLink to="/registration">
             <div>
-              <button className={s.register} type="button">
-                {value}
+              <button className={s.register_start} type="button">
+                {props.value}
+              </button>
+            </div>
+          </NavLink>
+        );
+
+      case "signup-finish":
+        return (
+          <NavLink to="/">
+            <div>
+              <button className={s.register_finish} type="button">
+                {props.value}
               </button>
             </div>
           </NavLink>
@@ -34,5 +41,5 @@ export default function Button(props) {
     }
   };
 
-  return <div className={s.container}>{button(props.value)}</div>;
+  return <div className={s.container}>{button(props.action)}</div>;
 }

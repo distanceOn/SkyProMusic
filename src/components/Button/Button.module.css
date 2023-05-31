@@ -1,4 +1,4 @@
-.register {
+.register_start {
   width: 278px;
   height: 52px;
   border: 1px solid #d0cece;
@@ -14,11 +14,35 @@
   color: #000000;
   outline: none;
 }
-.register:hover {
+.register_start:hover {
   background: #f4f5f6;
 }
-.register:active {
+.register_start:active {
   background: #d9d9d9;
+}
+
+.register_finish {
+  width: 278px;
+  height: 52px;
+  background: #580ea2;
+  border-radius: 6px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+  letter-spacing: -0.003em;
+
+  color: #ffffff;
+  border: transparent;
+  outline: none;
+}
+.register_finish:hover {
+  background: #3f007d;
+}
+.register_finish:active {
+  background: #271a58;
 }
 
 .entry {

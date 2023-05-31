@@ -15,6 +15,7 @@ export default function Input(props) {
       console.log(login);
     }
   }, [login]);
+  //
 
   // password
 
@@ -30,6 +31,7 @@ export default function Input(props) {
       console.log(pass);
     }
   });
+  //
 
   return (
     <div className={s.container}>
