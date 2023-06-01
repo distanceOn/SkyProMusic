@@ -7,11 +7,9 @@ export default function Button(props) {
       case "enter":
         return (
           <div>
-            <NavLink to="/">
-              <button className={s.entry} type="button" onClick={props.onClick}>
-                {props.value}
-              </button>
-            </NavLink>
+            <button className={s.entry} type="button" onClick={props.onClick}>
+              {props.value}
+            </button>
           </div>
         );
       case "signup-start":

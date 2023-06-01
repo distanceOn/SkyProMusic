@@ -7,6 +7,7 @@ export default function Auth() {
   const location = useLocation();
 
   const currentPath = location.pathname;
+
   //
   return (
     <div className={s.wrapper}>

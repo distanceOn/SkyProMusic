@@ -11,24 +11,35 @@ import { enter, registration } from "../../../redux/events/authEvents";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../../redux/slices/authSlice";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Form(props) {
   const [userLogin] = useLoginMutation();
   const [userSignup] = useSignupMutation();
   const [userToken] = useTokenMutation();
 
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const user = useSelector(getUser);
 
   useEffect(() => {
-    if (user.payload.auth.login === true) {
-      console.log(user);
+    if (localStorage.getItem("refresh")) {
+      console.log(user.payload.auth);
+      navigate("/");
+    } else {
+      navigate("/login");
     }
-  }, [user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localStorage.getItem("refresh")]);
 
-  function onEnter() {
-    enter(userLogin, dispatch, userToken);
-  }
+  const onEnter = async () => {
+    try {
+      await enter(userLogin, dispatch, userToken);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   function onRegistration() {
     registration(userSignup, dispatch, userToken);
   }

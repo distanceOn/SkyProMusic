@@ -10,8 +10,8 @@ export default function AppRoutes() {
       <Route path="/login" element={<Auth />} />
       <Route path="/registration" element={<Auth />} />
 
-      <Route element={<ProtectedRoute isAllowed={false} />}>
-        <Route path="/" element={<Main />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<Main />} index />
       </Route>
     </Routes>
   );
