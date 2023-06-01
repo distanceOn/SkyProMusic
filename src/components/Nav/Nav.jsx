@@ -1,7 +1,7 @@
 import s from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import Logo from "../../Imgs/Logo";
+import Logo from "../Imgs/Logo";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

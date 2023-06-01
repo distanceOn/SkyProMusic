@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Main from "./components/Main/Main";
+import Main from "./pages/Main/Main";
 import ProtectedRoute from "./ProtectedRoute";
 import Auth from "./pages/Auth/Auth";
 
