@@ -10,7 +10,7 @@ import {
 import { enter, registration } from "../../../redux/events/authEvents";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../../redux/slices/authSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Form(props) {
@@ -20,6 +20,8 @@ export default function Form(props) {
 
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const dispatch = useDispatch();
   const user = useSelector(getUser);
 
@@ -27,22 +29,28 @@ export default function Form(props) {
     if (localStorage.getItem("refresh")) {
       console.log(user.payload.auth);
       navigate("/");
-    } else {
-      navigate("/login");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localStorage.getItem("refresh")]);
 
   const onEnter = async () => {
+    setIsLoading(true);
     try {
       await enter(userLogin, dispatch, userToken);
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
-  function onRegistration() {
-    registration(userSignup, dispatch, userToken);
-  }
+  const onRegistration = async () => {
+    setIsLoading(true);
+    try {
+      await registration(userSignup, dispatch, userToken);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
 
   function getForm() {
     if (props.currentPath === "/login") {
@@ -57,7 +65,11 @@ export default function Form(props) {
           </div>
 
           <div className={s.buttons}>
-            <Button action="enter" value="Войти" onClick={onEnter} />
+            <Button
+              action="enter"
+              value={isLoading === true ? "Соединение..." : "Войти"}
+              onClick={onEnter}
+            />
             <Button action="signup-start" value="Зарегистрироваться" />
           </div>
         </div>
@@ -77,7 +89,9 @@ export default function Form(props) {
           <div className={s.buttons}>
             <Button
               action="signup-finish"
-              value="Зарегистрироваться"
+              value={
+                isLoading === true ? "Соединение..." : "Зарегистрироваться"
+              }
               onClick={onRegistration}
             />
           </div>

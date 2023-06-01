@@ -25,17 +25,15 @@ export default function Button(props) {
 
       case "signup-finish":
         return (
-          <NavLink to="/">
-            <div>
-              <button
-                className={s.register_finish}
-                type="button"
-                onClick={props.onClick}
-              >
-                {props.value}
-              </button>
-            </div>
-          </NavLink>
+          <div>
+            <button
+              className={s.register_finish}
+              type="button"
+              onClick={props.onClick}
+            >
+              {props.value}
+            </button>
+          </div>
         );
 
       default:

@@ -51,7 +51,6 @@ export const registration = async (userSignup, dispatch, userToken) => {
       };
       const response = await userSignup(logData);
       const responseData = response.data;
-
       await getToken(userToken, dispatch, logData, responseData);
     } catch (error) {
       console.log(error);
