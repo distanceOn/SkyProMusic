@@ -1,4 +1,3 @@
-import Logo from "../../../components/Imgs/Logo.png";
 import s from "./Form.module.css";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
@@ -12,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../../redux/slices/authSlice";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../../components/Imgs/Logo";
 
 export default function Form(props) {
   const [userLogin] = useLoginMutation();
@@ -57,7 +57,7 @@ export default function Form(props) {
       return (
         <div className={s.form}>
           <div className={s.logo}>
-            <img className={s.image} src={Logo} alt="logo" />
+            <Logo className={s.image} alt="logo" value="black" />
           </div>
           <div className={s.inputs}>
             <Input placeholder="Логин" />
@@ -78,7 +78,7 @@ export default function Form(props) {
       return (
         <div className={s.form}>
           <div className={s.logo}>
-            <img className={s.image} src={Logo} alt="logo" />
+            <Logo className={s.image} alt="logo" value="black" />
           </div>
           <div className={s.inputs}>
             <Input placeholder="Логин" />
