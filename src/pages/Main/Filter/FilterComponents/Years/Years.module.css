@@ -1,0 +1,33 @@
+.container {
+  margin-top: 20px;
+
+  display: flex;
+  padding: 34px;
+
+  position: absolute;
+  width: 403px;
+  height: 92px;
+
+  background: #313131;
+  border-radius: 12px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+
+  width: 335px;
+  height: 24px;
+}
+.input {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+}
