@@ -1,0 +1,11 @@
+.volume__progress {
+  width: 109px;
+}
+button,
+.btn {
+  cursor: pointer;
+}
+
+.volume__progressLine {
+  width: 109px;
+}

@@ -1,0 +1,27 @@
+.img {
+  width: 51px;
+  height: 51px;
+
+  background: #313131;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  grid-area: image;
+}
+.author {
+  width: 59px;
+  height: 15px;
+
+  background: #313131;
+  grid-area: author;
+  min-width: 49px;
+}
+.album {
+  width: 59px;
+  height: 15px;
+
+  background: #313131;
+  grid-area: album;
+  min-width: 49px;
+}

@@ -1,0 +1,11 @@
+.shuffle {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.shuffle__svg {
+  width: 19px;
+  height: 12px;
+  fill: transparent;
+  stroke: #696969;
+}

@@ -1,0 +1,14 @@
+.play {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 23px;
+  background-color: transparent;
+  border: none;
+}
+
+.play__svg {
+  width: 22px;
+  height: 20px;
+  fill: #d9d9d9;
+}

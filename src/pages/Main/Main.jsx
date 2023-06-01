@@ -3,6 +3,7 @@ import Nav from "../../components/Nav/Nav";
 import Search from "../../components/Search/Search";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Bar from "../../components/Bar/Bar";
 
 export default function Main() {
   return (
@@ -16,6 +17,7 @@ export default function Main() {
           </div>
           <Sidebar playlists />
         </div>
+        <Bar />
       </div>
     </div>
   );

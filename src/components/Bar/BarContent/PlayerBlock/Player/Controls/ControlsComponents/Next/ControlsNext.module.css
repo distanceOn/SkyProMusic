@@ -1,0 +1,13 @@
+.next {
+  margin-right: 28px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  fill: #a53939;
+}
+.next__svg {
+  width: 15px;
+  height: 14px;
+  fill: inherit;
+  stroke: #d9d9d9;
+}
