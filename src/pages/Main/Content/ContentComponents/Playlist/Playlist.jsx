@@ -3,11 +3,17 @@ import s from "./Playlist.module.css";
 import { useTracksQuery } from "../../../../../redux/services/api";
 import { useEffect, useState } from "react";
 import SkeletonTrack from "./Track/SkeletonTrack/SkeletonTrack";
+import { useDispatch, useSelector } from "react-redux";
+import { getTracks, setTracks } from "../../../../../redux/slices/tracksSlice";
 
 export default function Playlist() {
   const { data } = useTracksQuery();
-  console.log(data);
-  const [tracks, setTracks] = useState([]);
+
+  const tracksData = useSelector(getTracks);
+
+  const tracks = tracksData.payload.allTracks.tracks;
+
+  const dispatch = useDispatch();
 
   const [showFirst, setShowFirst] = useState(true);
 
@@ -15,14 +21,14 @@ export default function Playlist() {
     if (data !== undefined) {
       const getAllTracks = async () => {
         try {
-          setTracks(data);
+          dispatch(setTracks(data));
         } catch (error) {
           console.log(error);
         }
       };
       getAllTracks();
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   useEffect(() => {
     if (tracks.length > 0) {
@@ -31,7 +37,7 @@ export default function Playlist() {
   }, [tracks]);
 
   const showTracks = () => {
-    if (tracks !== undefined) {
+    if (tracks.length > 0) {
       return tracks.map((track) => (
         <Track
           key={track.id}
