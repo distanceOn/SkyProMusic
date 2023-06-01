@@ -27,7 +27,18 @@ export const api = createApi({
         body,
       }),
     }),
+    tracks: builder.query({
+      query: () => ({
+        url: "catalog/track/all/",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useSignupMutation, useLoginMutation, useTokenMutation } = api;
+export const {
+  useSignupMutation,
+  useLoginMutation,
+  useTokenMutation,
+  useTracksQuery,
+} = api;

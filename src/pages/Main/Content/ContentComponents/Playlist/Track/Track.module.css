@@ -1,0 +1,10 @@
+.item {
+  width: 1136px;
+  display: block;
+  margin-bottom: 12px;
+}
+.track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
