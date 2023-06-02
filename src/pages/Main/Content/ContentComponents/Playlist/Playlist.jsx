@@ -36,11 +36,20 @@ export default function Playlist() {
     }
   }, [tracks]);
 
+  const [activeItem, setActiveItem] = useState(null);
+
   const showTracks = () => {
     if (tracks.length > 0) {
+      const handleItemClick = (id) => {
+        setActiveItem(id);
+      };
+
       return tracks.map((track) => (
         <Track
+          className={`${s.item} ${activeItem === track.id ? s.active : ""}`}
+          handleItemClick={handleItemClick}
           key={track.id}
+          id={track.id}
           hrefTitle={track.track_file}
           nameTitle={track.name}
           hrefAuthor="#"

@@ -1,11 +1,12 @@
-.time__svg {
+.like {
   width: 14px;
   height: 12px;
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
+  cursor: pointer;
 }
-.time__text {
+.time {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

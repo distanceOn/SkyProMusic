@@ -1,10 +1,10 @@
-import s from './Time.module.css'
+import s from "./Time.module.css";
 
 export default function Time(props) {
   return (
     <div>
       <svg
-        className={s.time__svg}
+        className={s.like}
         width="16"
         height="14"
         viewBox="0 0 16 14"
@@ -16,7 +16,7 @@ export default function Time(props) {
           stroke="#696969"
         />
       </svg>
-      <span className={s.time__text}>{props.time}</span>
+      <span className={s.time}>{props.time}</span>
     </div>
-  )
+  );
 }

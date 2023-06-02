@@ -1,6 +1,7 @@
 .playlist {
   display: flex;
   flex-direction: column;
+  gap: 12px;
   overflow: auto;
   max-height: 540px;
   padding: 10px 17px 24px 11px;
@@ -23,4 +24,22 @@
 /* Стили для трека (track) */
 .playlist::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+.active {
+  background-color: #0c0c0c;
+}
+
+.item {
+  width: 1136px;
+  display: block;
+}
+
+.item:not(.active):hover {
+  background-color: #252525;
+  transition: all 0.15s;
+}
+.item:active {
+  background-color: #444444;
+  transition: all 0.15s;
 }
