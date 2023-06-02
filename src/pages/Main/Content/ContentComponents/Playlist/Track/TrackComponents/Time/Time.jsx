@@ -2,7 +2,7 @@ import s from "./Time.module.css";
 
 export default function Time(props) {
   return (
-    <div>
+    <div className={s.time__block}>
       <svg
         className={s.like}
         width="16"

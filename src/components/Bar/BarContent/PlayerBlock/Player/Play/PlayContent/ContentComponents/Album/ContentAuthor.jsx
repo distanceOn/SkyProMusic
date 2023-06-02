@@ -1,4 +1,4 @@
-import s from './ContentAlbum.module.css'
+import s from "./ContentAuthor.module.css";
 
 export default function ContentAlbum(props) {
   return (
@@ -7,5 +7,5 @@ export default function ContentAlbum(props) {
         {props.name}
       </a>
     </div>
-  )
+  );
 }

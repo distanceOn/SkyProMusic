@@ -1,4 +1,4 @@
-import s from './ContentAuthor.module.css'
+import s from "./ContentTrack.module.css";
 
 export default function ContentAuthor(props) {
   return (
@@ -7,5 +7,5 @@ export default function ContentAuthor(props) {
         {props.name}
       </a>
     </div>
-  )
+  );
 }

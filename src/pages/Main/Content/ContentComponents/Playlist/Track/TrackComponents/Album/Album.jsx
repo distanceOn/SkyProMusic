@@ -1,11 +1,9 @@
-import s from './Album.module.css'
+import s from "./Album.module.css";
 
-export default function Album(props) {
+export default function Author(props) {
   return (
     <div className={s.album}>
-      <a className={s.album__link} href={props.href}>
-        {props.name}
-      </a>
+      <div className={s.album__link}>{props.name}</div>
     </div>
-  )
+  );
 }

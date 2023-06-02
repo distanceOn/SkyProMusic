@@ -14,6 +14,7 @@ export default function BarPlayerBlock() {
   useEffect(() => {
     if (audio !== null) {
       console.log(audio);
+      handlePlay();
     }
   }, [audio]);
 
@@ -40,7 +41,6 @@ export default function BarPlayerBlock() {
         type="range"
         className={s.bar__playerProgress}
         min="0"
-        max={audioRef.current && audioRef.current.duration}
         value={currentTime}
         onChange={handleSeek}
       />

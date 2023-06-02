@@ -1,4 +1,4 @@
-import s from './Title.module.css'
+import s from "./Title.module.css";
 
 export default function Title(props) {
   if (props.postscript) {
@@ -25,7 +25,7 @@ export default function Title(props) {
           </a>
         </div>
       </div>
-    )
+    );
   }
   return (
     <div className={s.title}>
@@ -44,11 +44,10 @@ export default function Title(props) {
         </svg>
       </div>
       <div>
-        <a className={s.title__link} href={props.href}>
-          {props.name}
-          <span className={s.title__span} />
-        </a>
+        <div className={s.title__link}>
+          {props.name} <span className={s.title__span} />
+        </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,7 +1,6 @@
 .like {
   width: 14px;
   height: 12px;
-  margin-right: 17px;
   fill: transparent;
   stroke: #696969;
   cursor: pointer;
@@ -13,4 +12,10 @@
   line-height: 24px;
   text-align: right;
   color: #696969;
+}
+
+.time__block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }

@@ -1,7 +1,10 @@
 .trackPlay__content {
-  width: auto;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-areas: 'image author' 'image album';
+  width: 40vw;
+  display: flex;
   align-items: center;
+}
+
+.trackPlay__texts {
+  display: flex;
+  flex-direction: column;
 }
