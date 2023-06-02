@@ -27,6 +27,9 @@ export const enter = async (userLogin, dispatch, userToken) => {
       const response = await userLogin(logData);
       const responseData = response.data;
 
+      localStorage.setItem("user", JSON.stringify(responseData));
+      console.log(localStorage.getItem("user"));
+
       await getToken(userToken, dispatch, logData, responseData);
     } catch (error) {
       console.log(error);

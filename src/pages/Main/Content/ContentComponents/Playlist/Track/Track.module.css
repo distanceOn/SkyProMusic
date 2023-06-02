@@ -1,17 +1,3 @@
-.item {
-  width: 1136px;
-  display: block;
-}
-
-.item:not(.active):hover {
-  background-color: #252525;
-  transition: all 0.15s;
-}
-.item:active {
-  background-color: #444444;
-  transition: all 0.15s;
-}
-
 .track {
   display: flex;
   flex-direction: row;

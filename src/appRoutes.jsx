@@ -1,18 +1,24 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Main from "./pages/Main/Main";
-import ProtectedRoute from "./ProtectedRoute";
 import Auth from "./pages/Auth/Auth";
 
 export default function AppRoutes() {
+  const refresh = localStorage.getItem("refresh");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (refresh) {
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  }, [navigate, refresh]);
   return (
     <Routes>
       <Route path="/login" element={<Auth />} />
       <Route path="/registration" element={<Auth />} />
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<Main />} index />
-      </Route>
+      <Route path="/" element={<Main />} index />
     </Routes>
   );
 }
