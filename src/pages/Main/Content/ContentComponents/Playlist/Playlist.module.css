@@ -28,6 +28,7 @@
 
 .active {
   background-color: #0c0c0c;
+  transition: all 0.3s;
 }
 
 .item {
@@ -37,6 +38,10 @@
 
 .item:not(.active):hover {
   background-color: #252525;
+  transition: all 0.3s;
+}
+.item:not(.active):hover:active {
+  background-color: #444444;
   transition: all 0.15s;
 }
 .item:active {

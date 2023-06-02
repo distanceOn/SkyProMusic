@@ -33,6 +33,12 @@ export const api = createApi({
         method: "GET",
       }),
     }),
+    oneTrack: builder.query({
+      query: (id) => ({
+        url: `catalog/track/${id}/`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -41,4 +47,5 @@ export const {
   useLoginMutation,
   useTokenMutation,
   useTracksQuery,
+  useOneTrackQuery,
 } = api;

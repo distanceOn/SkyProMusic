@@ -9,6 +9,7 @@ export const tracksSlice = createSlice({
   initialState,
   reducers: {
     getTracks: (state) => state.tracks,
+
     setTracks: (state, action) => {
       return {
         ...state,

@@ -3,20 +3,43 @@ import Author from "./TrackComponents/Author/Author";
 import Time from "./TrackComponents/Time/Time";
 import Title from "./TrackComponents/Title/Title";
 import s from "./Track.module.css";
-import { useEffect } from "react";
+import { useOneTrackQuery } from "../../../../../../redux/services/api";
+import { useContext, useEffect, useState } from "react";
+import AudioContext from "../../../../../../contexts/audioContext";
 
 export default function Track(props) {
+  const id = props.id;
+
+  const { setAudio } = useContext(AudioContext);
+
+  const { data: trackData } = useOneTrackQuery(id);
+
+  const [track, setTrack] = useState(null);
+
   const handleItemClick = () => {
-    props.handleItemClick(props.id);
+    props.handleItemClick(id);
   };
 
-  useEffect(() => {}, [props.id]);
+  useEffect(() => {
+    if (trackData !== undefined) {
+      setTrack(trackData);
+      if (track !== null) {
+        setTrack(track);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trackData]);
 
   return (
     <div>
       <div
         className={`${props.item} ${props.className}`}
-        onClick={handleItemClick}
+        onClick={() => {
+          handleItemClick();
+          if (track !== null) {
+            setAudio(track);
+          }
+        }}
       >
         <div className={s.track}>
           <Title
