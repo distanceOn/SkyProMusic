@@ -10,7 +10,7 @@ import AudioContext from "../../../../../../contexts/audioContext";
 export default function Track(props) {
   const id = props.id;
 
-  const { setAudio } = useContext(AudioContext);
+  const { handleSetNewAudio } = useContext(AudioContext);
 
   const { data: trackData } = useOneTrackQuery(id);
 
@@ -37,7 +37,7 @@ export default function Track(props) {
         onClick={() => {
           handleItemClick();
           if (track !== null) {
-            setAudio(track);
+            handleSetNewAudio(track);
           }
         }}
       >

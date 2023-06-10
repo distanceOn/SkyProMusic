@@ -19,7 +19,13 @@ export default function BarPlayerBlock() {
   }, [audio]);
 
   const handlePlay = () => {
-    audioRef.current.play();
+    audioRef.current.play().catch((error) => {
+      if (error.name === "NotAllowedError") {
+        console.log("Audio playback was prevented by the browser.");
+      } else {
+        console.log("Error playing audio:", error.message);
+      }
+    });
     setIsPlaying(true);
   };
 
@@ -27,12 +33,20 @@ export default function BarPlayerBlock() {
     audioRef.current.pause();
     setIsPlaying(false);
   };
+
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);
   };
+
   const handleSeek = (event) => {
     audioRef.current.currentTime = event.target.value;
     setCurrentTime(audioRef.current.currentTime);
+  };
+
+  const handleCanPlayThrough = () => {
+    if (isPlaying) {
+      handlePlay();
+    }
   };
 
   return (
@@ -49,6 +63,7 @@ export default function BarPlayerBlock() {
           ref={audioRef}
           src={audio ? audio.track_file : "/audio/BobbyMarleniDropping.mp3"}
           onTimeUpdate={handleTimeUpdate}
+          onCanPlayThrough={handleCanPlayThrough}
         >
           <source
             src={audio ? audio.track_file : "/audio/BobbyMarleniDropping.mp3"}
