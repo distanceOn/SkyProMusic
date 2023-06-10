@@ -1,8 +1,8 @@
-import s from './ControlsNext.module.css'
+import s from "./ControlsNext.module.css";
 
-export default function ControlsNext() {
+export default function ControlsNext(props) {
   return (
-    <div className={s.next}>
+    <button type="button" className={s.next} onClick={props.handleNextTrack}>
       <svg
         className={s.next__svg}
         alt="next"
@@ -15,6 +15,6 @@ export default function ControlsNext() {
         <path d="M15 2V12.5" stroke="white" />
         <path d="M13 7L3.25 0.937823L3.25 13.0622L13 7Z" fill="#D9D9D9" />
       </svg>
-    </div>
-  )
+    </button>
+  );
 }

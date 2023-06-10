@@ -1,23 +1,22 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ContentAuthor from "./ContentComponents/Author/ContentTrack";
 import ContentTrack from "./ContentComponents/Author/ContentTrack";
 import ContentCover from "./ContentComponents/Cover/ContentCover";
 import s from "./PlayContent.module.css";
-import AudioContext from "../../../../../../../contexts/audioContext";
 import PlayLikeDis from "../PlayLikeDis/PlayLikeDis";
 
-export default function PlayContent() {
-  const { audio } = useContext(AudioContext);
+export default function PlayContent(props) {
+  const currentAudio = props.currentAudio;
 
   const [name, setName] = useState();
   const [author, setAuthor] = useState();
 
   useEffect(() => {
-    if (audio) {
-      setName(audio.name);
-      setAuthor(audio.author);
+    if (currentAudio !== null) {
+      setName(currentAudio.name);
+      setAuthor(currentAudio.author);
     }
-  }, [audio]);
+  }, [currentAudio]);
 
   return (
     <div>
@@ -25,8 +24,8 @@ export default function PlayContent() {
       <div className={s.trackPlay__content}>
         <ContentCover />
         <div className={s.trackPlay__texts}>
-          <ContentTrack href="#" name={audio ? name : "Ты та..."} />
-          <ContentAuthor href="#" name={audio ? author : "Баста"} />
+          <ContentTrack href="#" name={currentAudio ? name : "Ты та..."} />
+          <ContentAuthor href="#" name={currentAudio ? author : "Баста"} />
         </div>
         <PlayLikeDis />
       </div>

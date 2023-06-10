@@ -1,8 +1,8 @@
-import s from './ControlsPrev.module.css'
+import s from "./ControlsPrev.module.css";
 
-export default function ControlsPrev() {
+export default function ControlsPrev(props) {
   return (
-    <div className={s.prev}>
+    <button type="button" className={s.prev} onClick={props.handlePrevTrack}>
       <svg
         className={s.prev__svg}
         alt="prev"
@@ -15,6 +15,6 @@ export default function ControlsPrev() {
         <path d="M1 2V12.5" stroke="white" />
         <path d="M3 7L12.75 0.937823L12.75 13.0622L3 7Z" fill="#D9D9D9" />
       </svg>
-    </div>
-  )
+    </button>
+  );
 }

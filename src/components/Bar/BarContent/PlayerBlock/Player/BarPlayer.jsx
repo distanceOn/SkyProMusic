@@ -1,16 +1,18 @@
-import Controls from './Controls/PlayerControls'
-import Play from './Play/Play'
-import s from './BarPlayer.module.css'
+import Controls from "./Controls/PlayerControls";
+import Play from "./Play/Play";
+import s from "./BarPlayer.module.css";
 
 export default function BarPlayer(props) {
   return (
     <div className={s.bar__player}>
       <Controls
+        handlePrevTrack={props.handlePrevTrack}
+        handleNextTrack={props.handleNextTrack}
         handlePlay={props.handlePlay}
         handlePause={props.handlePause}
         isPlaying={props.isPlaying}
       />
-      <Play />
+      <Play currentAudio={props.currentAudio} />
     </div>
-  )
+  );
 }

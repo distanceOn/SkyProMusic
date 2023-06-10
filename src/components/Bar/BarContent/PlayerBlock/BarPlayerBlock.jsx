@@ -3,6 +3,8 @@ import BarPlayer from "./Player/BarPlayer";
 import Volume from "./Volume/Volume";
 import s from "./BarPlayerBlock.module.css";
 import AudioContext from "../../../../contexts/audioContext";
+import { getTracks } from "../../../../redux/slices/tracksSlice";
+import { useSelector } from "react-redux";
 
 export default function BarPlayerBlock() {
   const audioRef = useRef(null);
@@ -11,11 +13,21 @@ export default function BarPlayerBlock() {
 
   const { audio } = useContext(AudioContext);
 
+  const [currentAudio, setCurrentAudio] = useState(null);
+
+  const allTracksData = useSelector(getTracks);
+  const allTracks = allTracksData.payload.allTracks.tracks;
+
+  const [playedTracks, setPlayedTracks] = useState([]);
+
   useEffect(() => {
     if (audio !== null) {
-      console.log(audio);
+      setCurrentAudio(audio);
+      setPlayedTracks((prevTracks) => [...prevTracks, audio]);
+      console.log("played tracks", playedTracks);
       handlePlay();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audio]);
 
   const handlePlay = () => {
@@ -49,6 +61,54 @@ export default function BarPlayerBlock() {
     }
   };
 
+  const handlePrevTrack = () => {
+    if (playedTracks.length > 0) {
+      // Создаем копию массива playedTracks
+      const updatedTracks = [...playedTracks];
+
+      if (updatedTracks.length > 1) {
+        // Удаляем последний элемент из копии массива playedTracks
+        updatedTracks.pop();
+        setCurrentAudio(updatedTracks[updatedTracks.length - 1]);
+      }
+
+      // Обновляем состояние playedTracks
+      setPlayedTracks(updatedTracks);
+      handlePlay();
+    }
+  };
+
+  // ...
+
+  const handleNextTrack = () => {
+    if (currentAudio !== null) {
+      const id = currentAudio.id + 1;
+      let nextTrack = null;
+
+      for (let i = 0; i < allTracks.length; i++) {
+        if (allTracks[allTracks.length - 1].id < id) {
+          nextTrack = allTracks[0];
+          break;
+        } else if (allTracks[i].id === id) {
+          nextTrack = allTracks[i];
+          break;
+        }
+      }
+
+      if (
+        nextTrack !== null &&
+        nextTrack !== playedTracks[playedTracks.length - 1]
+      ) {
+        setCurrentAudio(nextTrack);
+        setPlayedTracks((prevTracks) => [...prevTracks, nextTrack]);
+        console.log(playedTracks);
+        handlePlay();
+      }
+    }
+  };
+
+  // ...
+
   return (
     <div className={s.bar__content}>
       <input
@@ -61,20 +121,31 @@ export default function BarPlayerBlock() {
       <div className={s.bar__playerBlock}>
         <audio
           ref={audioRef}
-          src={audio ? audio.track_file : "/audio/BobbyMarleniDropping.mp3"}
+          src={
+            currentAudio
+              ? currentAudio.track_file
+              : "/audio/BobbyMarleniDropping.mp3"
+          }
           onTimeUpdate={handleTimeUpdate}
           onCanPlayThrough={handleCanPlayThrough}
         >
           <source
-            src={audio ? audio.track_file : "/audio/BobbyMarleniDropping.mp3"}
+            src={
+              currentAudio
+                ? currentAudio.track_file
+                : "/audio/BobbyMarleniDropping.mp3"
+            }
             type="audio/mpeg"
           />
           <track kind="captions" />
         </audio>
         <BarPlayer
+          handlePrevTrack={handlePrevTrack}
+          handleNextTrack={handleNextTrack}
           handlePlay={handlePlay}
           handlePause={handlePause}
           isPlaying={isPlaying}
+          currentAudio={currentAudio}
         />
         <Volume />
       </div>
