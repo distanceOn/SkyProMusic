@@ -3,13 +3,15 @@ import BarPlayer from "./Player/BarPlayer";
 import Volume from "./Volume/Volume";
 import s from "./BarPlayerBlock.module.css";
 import AudioContext from "../../../../contexts/audioContext";
-import { getTracks } from "../../../../redux/slices/tracksSlice";
-import { useSelector } from "react-redux";
+import { getTracks, setActiveItem } from "../../../../redux/slices/tracksSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function BarPlayerBlock() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
+
+  const dispatch = useDispatch();
 
   const { audio } = useContext(AudioContext);
 
@@ -70,6 +72,7 @@ export default function BarPlayerBlock() {
         // Удаляем последний элемент из копии массива playedTracks
         updatedTracks.pop();
         setCurrentAudio(updatedTracks[updatedTracks.length - 1]);
+        dispatch(setActiveItem(updatedTracks[updatedTracks.length - 1].id));
       }
 
       // Обновляем состояние playedTracks
@@ -100,6 +103,7 @@ export default function BarPlayerBlock() {
         nextTrack !== playedTracks[playedTracks.length - 1]
       ) {
         setCurrentAudio(nextTrack);
+        dispatch(setActiveItem(nextTrack.id));
         setPlayedTracks((prevTracks) => [...prevTracks, nextTrack]);
         console.log(playedTracks);
         handlePlay();

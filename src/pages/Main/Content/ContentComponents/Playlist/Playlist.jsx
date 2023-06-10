@@ -4,14 +4,21 @@ import { useTracksQuery } from "../../../../../redux/services/api";
 import { useEffect, useState } from "react";
 import SkeletonTrack from "./Track/SkeletonTrack/SkeletonTrack";
 import { useDispatch, useSelector } from "react-redux";
-import { getTracks, setTracks } from "../../../../../redux/slices/tracksSlice";
+import {
+  getTracks,
+  setTracks,
+  setActiveItem,
+  getActiveItem,
+} from "../../../../../redux/slices/tracksSlice";
 
 export default function Playlist() {
   const { data } = useTracksQuery();
 
   const tracksData = useSelector(getTracks);
+  const activeItemData = useSelector(getActiveItem);
 
   const tracks = tracksData.payload.allTracks.tracks;
+  const activeItem = activeItemData.payload.allTracks.activeItem;
 
   const dispatch = useDispatch();
 
@@ -36,12 +43,10 @@ export default function Playlist() {
     }
   }, [tracks]);
 
-  const [activeItem, setActiveItem] = useState(null);
-
   const showTracks = () => {
     if (tracks.length > 0) {
       const handleItemClick = (id) => {
-        setActiveItem(id);
+        dispatch(setActiveItem(id));
       };
 
       return tracks.map((track) => (
