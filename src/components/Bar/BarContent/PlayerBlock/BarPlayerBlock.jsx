@@ -119,6 +119,7 @@ export default function BarPlayerBlock() {
         type="range"
         className={s.bar__playerProgress}
         min="0"
+        max={audioRef.current?.duration || 0}
         value={currentTime}
         onChange={handleSeek}
       />
@@ -132,6 +133,7 @@ export default function BarPlayerBlock() {
           }
           onTimeUpdate={handleTimeUpdate}
           onCanPlayThrough={handleCanPlayThrough}
+          onEnded={handleNextTrack}
         >
           <source
             src={
