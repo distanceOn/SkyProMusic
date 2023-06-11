@@ -10,6 +10,10 @@ export default function Nav() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleLogoutClick = () => {
+    localStorage.clear();
+  };
+
   return (
     <nav className={s.nav}>
       <NavLink to="/">
@@ -34,7 +38,7 @@ export default function Nav() {
             <NavLink to="/mytracks">
               <li className={s.item}>Мой плейлист</li>
             </NavLink>
-            <NavLink to="/login">
+            <NavLink onClick={handleLogoutClick} to="/login">
               <li className={s.item}>Выйти</li>
             </NavLink>
           </ul>

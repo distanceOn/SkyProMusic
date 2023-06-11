@@ -54,6 +54,10 @@ export const registration = async (userSignup, dispatch, userToken) => {
       };
       const response = await userSignup(logData);
       const responseData = response.data;
+
+      localStorage.setItem("user", JSON.stringify(responseData));
+      console.log(localStorage.getItem("user"));
+
       await getToken(userToken, dispatch, logData, responseData);
     } catch (error) {
       console.log(error);
