@@ -32,9 +32,14 @@ export default function Sidebar(props) {
       ""
     );
   };
+
+  const handleLogout = () => {
+    localStorage.clear();
+  };
+
   return (
     <div className={s.sidebar}>
-      <NavLink to="/login">
+      <NavLink onClick={handleLogout} to="/login">
         <button className={s.logout} type="button">
           <Logout />
         </button>

@@ -39,6 +39,13 @@ export const api = createApi({
         method: "GET",
       }),
     }),
+    refreshToken: builder.mutation({
+      query: (body) => ({
+        url: "user/token/refresh/",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -48,4 +55,5 @@ export const {
   useTokenMutation,
   useTracksQuery,
   useOneTrackQuery,
+  useRefreshTokenMutation,
 } = api;

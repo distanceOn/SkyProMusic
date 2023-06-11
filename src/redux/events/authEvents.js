@@ -7,6 +7,7 @@ const getToken = async (userToken, dispatch, logData, responseData) => {
 
     dispatch(setUser({ ...responseData, token: tokenData.data }));
     localStorage.setItem("refresh", tokenData.data.refresh);
+    localStorage.setItem("access", tokenData.data.access);
     console.log(localStorage);
   } catch (error) {
     console.log(error);
