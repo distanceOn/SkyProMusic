@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Main from "../pages/Main/Main";
 import Auth from "../pages/Auth/Auth";
 import { useRefreshTokenMutation } from "../redux/services/api";
+import Collections from "../pages/Collections/Collections";
 
 export default function AppRoutes() {
   const refresh = localStorage.getItem("refresh");
@@ -30,7 +31,6 @@ export default function AppRoutes() {
   const navigate = useNavigate();
   useEffect(() => {
     if (refresh) {
-      navigate("/");
       startInterval();
     } else if (window.location.pathname !== "/registration") {
       navigate("/login");
@@ -44,6 +44,21 @@ export default function AppRoutes() {
       <Route path="/registration" element={<Auth />} />
 
       <Route path="/" element={<Main />} index />
+      <Route
+        path="/collections:1"
+        element={<Collections collection={"day"} />}
+        index
+      />
+      <Route
+        path="/collections:2"
+        element={<Collections collection={"dance"} />}
+        index
+      />
+      <Route
+        path="/collections:3"
+        element={<Collections collection={"indi"} />}
+        index
+      />
     </Routes>
   );
 }
