@@ -15,7 +15,7 @@ export default function Collection(props) {
           <div className={s.centerblock}>
             <Search />
             <Header value={props.name} />
-            <Content playlist={props.playlist} />
+            <Content playlist={props.playlist} id={props.id} />
             {/* <Content /> */}
           </div>
           <Sidebar />

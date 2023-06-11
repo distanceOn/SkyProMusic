@@ -17,7 +17,7 @@ export default function Main() {
             <Search />
             <Header value="Треки" />
             <Filter />
-            <Content playlist="main" />
+            <Content />
           </div>
           <Sidebar playlists />
         </div>

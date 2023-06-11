@@ -6,7 +6,7 @@ export default function Content(props) {
   return (
     <div className={s.content}>
       <Titles />
-      <Playlist playlist={props.playlist} />
+      <Playlist playlist={props.playlist} id={props.id} />
     </div>
   );
 }

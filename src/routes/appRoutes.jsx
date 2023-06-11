@@ -46,17 +46,17 @@ export default function AppRoutes() {
       <Route path="/" element={<Main />} index />
       <Route
         path="/collections:1"
-        element={<Collections collection={"day"} />}
+        element={<Collections collection={"day"} id={1} />}
         index
       />
       <Route
         path="/collections:2"
-        element={<Collections collection={"dance"} />}
+        element={<Collections collection={"dance"} id={2} />}
         index
       />
       <Route
         path="/collections:3"
-        element={<Collections collection={"indi"} />}
+        element={<Collections collection={"indi"} id={3} />}
         index
       />
     </Routes>
