@@ -1,10 +1,38 @@
+import {
+  useAddToFavoriteMutation,
+  useRemoveFromFavoriteMutation,
+} from "../../../../../../../redux/services/api";
 import s from "./Time.module.css";
 
 export default function Time(props) {
+  const [addToFavorite] = useAddToFavoriteMutation();
+  const [removeFromFavorite] = useRemoveFromFavoriteMutation();
+
+  const handleLike = () => {
+    if (props.isLiked === false) {
+      addToFavorite(props.id)
+        .then((response) => {
+          console.log(response);
+          props.setIsLiked(!props.isLiked);
+        })
+        .catch((error) => {
+          console.log("Error adding to favourite:", error);
+        });
+    } else if (props.isLiked === true) {
+      removeFromFavorite(props.id)
+        .then((response) => {
+          console.log(response);
+          props.setIsLiked(!props.isLiked);
+        })
+        .catch((error) => {
+          console.log("Error removing to favourite:", error);
+        });
+    }
+  };
   return (
     <div className={s.time__block}>
       <svg
-        onClick={props.handleLike}
+        onClick={handleLike}
         className={s.like}
         width="16"
         height="14"
