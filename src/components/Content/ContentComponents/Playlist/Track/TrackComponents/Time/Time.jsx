@@ -4,11 +4,12 @@ export default function Time(props) {
   return (
     <div className={s.time__block}>
       <svg
+        onClick={props.handleLike}
         className={s.like}
         width="16"
         height="14"
         viewBox="0 0 16 14"
-        fill="none"
+        fill={props.isLiked === true ? "#AD61FF" : "transparent"}
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
