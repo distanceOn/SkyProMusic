@@ -3,9 +3,9 @@ import Author from "./TrackComponents/Author/Author";
 import Time from "./TrackComponents/Time/Time";
 import Title from "./TrackComponents/Title/Title";
 import s from "./Track.module.css";
-import { useOneTrackQuery } from "../../../../../../redux/services/api";
 import { useContext, useEffect, useState } from "react";
-import AudioContext from "../../../../../../contexts/audioContext";
+import { useOneTrackQuery } from "../../../../../redux/services/api";
+import AudioContext from "../../../../../contexts/audioContext";
 
 export default function Track(props) {
   const id = props.id;

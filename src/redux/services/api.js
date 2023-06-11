@@ -46,6 +46,12 @@ export const api = createApi({
         body,
       }),
     }),
+    playlists: builder.query({
+      query: (id) => ({
+        url: `catalog/selection/${id}/`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -56,4 +62,5 @@ export const {
   useTracksQuery,
   useOneTrackQuery,
   useRefreshTokenMutation,
+  usePlaylistsQuery,
 } = api;

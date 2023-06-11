@@ -4,6 +4,7 @@ import Search from "../../../components/Search/Search";
 import Header from "../../../components/Header/Header";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import Bar from "../../../components/Bar/Bar";
+import Content from "../../../components/Content/Content";
 
 export default function Collection(props) {
   return (
@@ -14,7 +15,7 @@ export default function Collection(props) {
           <div className={s.centerblock}>
             <Search />
             <Header value={props.name} />
-
+            <Content playlist={props.playlist} />
             {/* <Content /> */}
           </div>
           <Sidebar />

@@ -1,8 +1,7 @@
-import Track from "./Track/Track";
-import s from "./Playlist.module.css";
-import { useTracksQuery } from "../../../../../redux/services/api";
+import s from "./DayPLaylist.module.css";
+import { usePlaylistsQuery } from "../../../../../redux/services/api";
 import { useEffect, useState } from "react";
-import SkeletonTrack from "./Track/SkeletonTrack/SkeletonTrack";
+import SkeletonTrack from "../Track/SkeletonTrack/SkeletonTrack";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getTracks,
@@ -10,9 +9,10 @@ import {
   setActiveItem,
   getActiveItem,
 } from "../../../../../redux/slices/tracksSlice";
+import Track from "../Track/Track";
 
-export default function Playlist() {
-  const { data } = useTracksQuery();
+export default function DayPlaylist() {
+  const { data } = usePlaylistsQuery(1);
 
   const tracksData = useSelector(getTracks);
   const activeItemData = useSelector(getActiveItem);
@@ -28,7 +28,8 @@ export default function Playlist() {
     if (data !== undefined) {
       const getAllTracks = async () => {
         try {
-          dispatch(setTracks(data));
+          dispatch(setTracks(data.items));
+          console.log(data);
         } catch (error) {
           console.log(error);
         }

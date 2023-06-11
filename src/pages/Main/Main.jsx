@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Bar from "../../components/Bar/Bar";
 import Filter from "./Filter/Filter";
-import Content from "./Content/Content";
+import Content from "../../components/Content/Content";
 
 export default function Main() {
   return (
@@ -17,7 +17,7 @@ export default function Main() {
             <Search />
             <Header value="Треки" />
             <Filter />
-            <Content />
+            <Content playlist="main" />
           </div>
           <Sidebar playlists />
         </div>
