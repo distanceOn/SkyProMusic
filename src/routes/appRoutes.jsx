@@ -38,6 +38,7 @@ export default function AppRoutes() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate, refresh]);
+
   return (
     <Routes>
       <Route path="/login" element={<Auth />} />
@@ -57,6 +58,11 @@ export default function AppRoutes() {
       <Route
         path="/collections:3"
         element={<Collections collection={"indi"} id={3} />}
+        index
+      />
+      <Route
+        path="/mytracks"
+        element={<Collections collection={"favorite"} />}
         index
       />
     </Routes>

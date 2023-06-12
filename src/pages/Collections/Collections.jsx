@@ -1,11 +1,12 @@
-import Collection from "./Collection/Collection";
+import MyCollection from "./Collection/MyCollection/MyCollection";
+import PlaylistCollection from "./Collection/PlaylistCollection/PlaylistCollection";
 
 export default function Collections(props) {
   const showCollection = () => {
     switch (props.collection) {
       case "day":
         return (
-          <Collection
+          <PlaylistCollection
             name="Плейлист дня"
             playlist={props.collection}
             id={props.id}
@@ -13,7 +14,7 @@ export default function Collections(props) {
         );
       case "dance":
         return (
-          <Collection
+          <PlaylistCollection
             name="100 танцевальных хитов"
             playlist={props.collection}
             id={props.id}
@@ -21,12 +22,14 @@ export default function Collections(props) {
         );
       case "indi":
         return (
-          <Collection
+          <PlaylistCollection
             name="Инди заряд"
             playlist={props.collection}
             id={props.id}
           />
         );
+      case "favorite":
+        return <MyCollection name="Мои треки" playlist={props.collection} />;
 
       default:
         break;

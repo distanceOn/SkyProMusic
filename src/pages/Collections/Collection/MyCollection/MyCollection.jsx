@@ -1,18 +1,17 @@
-import s from "./Main.module.css";
-import Nav from "../../components/Nav/Nav";
-import Search from "../../components/Search/Search";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Bar from "../../components/Bar/Bar";
-import Filter from "./Filter/Filter";
-import Content from "../../components/Content/Content";
-import { useTracksQuery } from "../../redux/services/api";
+import s from "./MyCollection.module.css";
+import Nav from "../../../../components/Nav/Nav";
+import Content from "../../../../components/Content/Content";
+import Search from "../../../../components/Search/Search";
+import Header from "../../../../components/Header/Header";
+import Sidebar from "../../../../components/Sidebar/Sidebar";
+import Bar from "../../../../components/Bar/Bar";
+import { useFavoriteTracksQuery } from "../../../../redux/services/api";
 import { useDispatch, useSelector } from "react-redux";
-import { getTracks, setTracks } from "../../redux/slices/tracksSlice";
+import { getTracks, setTracks } from "../../../../redux/slices/tracksSlice";
 import { useEffect, useState } from "react";
 
-export default function Main() {
-  const { data: allTracksData, refetch } = useTracksQuery();
+export default function MyCollection(props) {
+  const { data: favoriteData, refetch } = useFavoriteTracksQuery();
 
   const [data, setData] = useState(undefined);
 
@@ -20,7 +19,7 @@ export default function Main() {
     const fetchData = async () => {
       try {
         await refetch();
-        console.log(allTracksData);
+        console.log(favoriteData);
       } catch (error) {
         console.log(error);
       }
@@ -30,8 +29,8 @@ export default function Main() {
   }, [refetch]);
 
   useEffect(() => {
-    setData(allTracksData);
-  }, [allTracksData]);
+    setData(favoriteData);
+  }, [favoriteData]);
 
   const tracksData = useSelector(getTracks);
 
@@ -60,11 +59,11 @@ export default function Main() {
           <Nav />
           <div className={s.centerblock}>
             <Search />
-            <Header value="Треки" />
-            <Filter />
-            <Content tracks={tracks} />
+            <Header value={props.name} />
+
+            <Content playlist={props.playlist} id={props.id} tracks={tracks} />
           </div>
-          <Sidebar playlists />
+          <Sidebar />
         </div>
         <Bar />
       </div>

@@ -12,7 +12,19 @@ export default function Track(props) {
 
   const { handleSetNewAudio } = useContext(AudioContext);
 
-  const { data: trackData } = useOneTrackQuery(id);
+  const { data: trackData, refetch } = useOneTrackQuery(id);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await refetch();
+        console.log(trackData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [refetch]);
 
   const [isLiked, setIsLiked] = useState(false);
 

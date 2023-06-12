@@ -52,6 +52,15 @@ export const api = createApi({
         method: "GET",
       }),
     }),
+    favoriteTracks: builder.query({
+      query: () => ({
+        url: "catalog/track/favorite/all/",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+      }),
+    }),
     addToFavorite: builder.mutation({
       query: (id) => ({
         url: `catalog/track/${id}/favorite/`,
@@ -81,6 +90,7 @@ export const {
   useOneTrackQuery,
   useRefreshTokenMutation,
   usePlaylistsQuery,
+  useFavoriteTracksQuery,
   useAddToFavoriteMutation,
   useRemoveFromFavoriteMutation,
 } = api;
