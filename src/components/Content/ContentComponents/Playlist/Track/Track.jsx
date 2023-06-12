@@ -6,6 +6,7 @@ import s from "./Track.module.css";
 import { useContext, useEffect, useState } from "react";
 import { useOneTrackQuery } from "../../../../../redux/services/api";
 import AudioContext from "../../../../../contexts/audioContext";
+import SkeletonTrack from "./SkeletonTrack/SkeletonTrack";
 
 export default function Track(props) {
   const id = props.id;
@@ -18,12 +19,14 @@ export default function Track(props) {
     const fetchData = async () => {
       try {
         await refetch();
+        setShowFirst(false);
         console.log(trackData);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refetch]);
 
   const [isLiked, setIsLiked] = useState(false);
@@ -50,7 +53,11 @@ export default function Track(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trackData]);
 
-  return (
+  const [showFirst, setShowFirst] = useState(true);
+
+  return showFirst ? (
+    <SkeletonTrack />
+  ) : (
     <div>
       <div
         className={`${props.item} ${props.className}`}

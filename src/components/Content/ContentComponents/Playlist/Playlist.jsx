@@ -1,6 +1,5 @@
 import s from "./Playlist.module.css";
 import {} from "../../../../redux/services/api";
-import { useEffect, useState } from "react";
 import SkeletonTrack from "./Track/SkeletonTrack/SkeletonTrack";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -22,8 +21,6 @@ export default function Playlist(props) {
 
   const dispatch = useDispatch();
 
-  const [showFirst, setShowFirst] = useState(true);
-
   // useEffect(() => {
   //   if (data !== undefined) {
   //     const getAllTracks = async () => {
@@ -41,12 +38,6 @@ export default function Playlist(props) {
   //   }
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [data, dispatch]);
-
-  useEffect(() => {
-    if (props.tracks.length > 0) {
-      setShowFirst(false);
-    }
-  }, [props.tracks]);
 
   const showTracks = () => {
     if (props.tracks.length > 0) {
@@ -74,13 +65,9 @@ export default function Playlist(props) {
     }
   };
 
-  const skeletonItems = Array(8)
-    .fill()
-    .map((_, index) => <SkeletonTrack key={index} />);
-
   return (
     <div className={s.playlist}>
-      {showFirst ? skeletonItems : showTracks()} <SkeletonTrack />;
+      {showTracks()} <SkeletonTrack />;
     </div>
   );
 }
