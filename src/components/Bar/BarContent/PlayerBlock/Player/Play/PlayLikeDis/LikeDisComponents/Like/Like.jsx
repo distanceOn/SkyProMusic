@@ -1,15 +1,15 @@
-import s from './Like.module.css'
+import s from "./Like.module.css";
 
-export default function Like() {
+export default function Like(props) {
   return (
-    <div className={s.like}>
+    <div className={s.like} onClick={props.handleLike}>
       <svg
         className={s.like__svg}
         alt="like"
         width="16"
         height="14"
         viewBox="0 0 16 14"
-        fill="none"
+        fill={props.isLiked === true ? "#AD61FF" : "none"}
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -18,5 +18,5 @@ export default function Like() {
         />
       </svg>
     </div>
-  )
+  );
 }

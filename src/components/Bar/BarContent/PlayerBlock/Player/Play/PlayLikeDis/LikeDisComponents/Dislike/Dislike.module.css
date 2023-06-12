@@ -1,11 +1,10 @@
 .dislike {
   padding: 5px;
   margin-left: 28.5px;
+  cursor: pointer;
 }
 
 .dislike__svg {
-  width: 14.34px;
-  height: 13px;
-  fill: transparent;
-  stroke: #696969;
+  width: 20px;
+  height: 20px;
 }

@@ -27,7 +27,11 @@ export default function PlayContent(props) {
           <ContentTrack href="#" name={currentAudio ? name : "Ты та..."} />
           <ContentAuthor href="#" name={currentAudio ? author : "Баста"} />
         </div>
-        <PlayLikeDis />
+        <PlayLikeDis
+          isLiked={props.isLiked}
+          setIsLiked={props.setIsLiked}
+          id={props.id}
+        />
       </div>
       )
     </div>

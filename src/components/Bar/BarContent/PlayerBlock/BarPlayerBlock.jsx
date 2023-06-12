@@ -22,6 +22,19 @@ export default function BarPlayerBlock() {
 
   const [playedTracks, setPlayedTracks] = useState([]);
 
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    if (currentAudio !== null) {
+      setIsLiked(
+        currentAudio.stared_user.some(
+          (element) => element.id === parseInt(localStorage.getItem("id"))
+        )
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentAudio]);
+
   useEffect(() => {
     if (audio !== null) {
       setCurrentAudio(audio);
@@ -152,6 +165,9 @@ export default function BarPlayerBlock() {
           handlePause={handlePause}
           isPlaying={isPlaying}
           currentAudio={currentAudio}
+          isLiked={isLiked}
+          setIsLiked={setIsLiked}
+          id={currentAudio !== null ? currentAudio.id : undefined}
         />
         <Volume />
       </div>

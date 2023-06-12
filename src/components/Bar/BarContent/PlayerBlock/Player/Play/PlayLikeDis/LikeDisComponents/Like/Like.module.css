@@ -1,9 +1,9 @@
 .like {
   padding: 5px;
+  cursor: pointer;
 }
 .like__svg {
-  width: 14px;
-  height: 12px;
-  fill: transparent;
+  width: 18px;
+  height: 18px;
   stroke: #696969;
 }

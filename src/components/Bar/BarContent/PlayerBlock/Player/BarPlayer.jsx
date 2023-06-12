@@ -12,7 +12,12 @@ export default function BarPlayer(props) {
         handlePause={props.handlePause}
         isPlaying={props.isPlaying}
       />
-      <Play currentAudio={props.currentAudio} />
+      <Play
+        currentAudio={props.currentAudio}
+        isLiked={props.isLiked}
+        setIsLiked={props.setIsLiked}
+        id={props.id}
+      />
     </div>
   );
 }
