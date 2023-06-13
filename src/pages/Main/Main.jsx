@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import {
   getAuthorState,
   getGenreState,
+  getYearsState,
   setAuthorState,
   setGenreState,
   setSelectionAuthorState,
@@ -125,16 +126,61 @@ export default function Main() {
     console.log("ААААААААААААААААААААААААА", useTracks);
   }, [authorData]);
 
+  const yearFilter = useSelector(getYearsState);
+
+  const [yearData, setYearData] = useState(null);
+
+  useEffect(() => {
+    setYearData(yearFilter.payload.filter.years.newer);
+    console.log(yearFilter.payload.filter.years.newer);
+  }, [yearFilter]);
+
+  useEffect(() => {
+    if (yearData !== null && originalTracks.length > 0) {
+      const tracksWithYears = [];
+      const tracksNoYears = [];
+      const filterTracks = () => {
+        originalTracks.forEach((track) => {
+          track.release_date
+            ? tracksWithYears.push(track)
+            : tracksNoYears.push(track);
+        });
+      };
+      filterTracks();
+      const filteredTracks = tracksWithYears.sort((a, b) =>
+        parseInt(
+          a.release_date.substring(0, 4) -
+            parseInt(b.release_date.substring(0, 4))
+        )
+      );
+      tracksNoYears.forEach((track) => {
+        filteredTracks.push(track);
+      });
+
+      if (yearData) {
+        setUseTracks(filteredTracks);
+      } else if (!yearData) {
+        setUseTracks(filteredTracks.reverse());
+      } else {
+        setUseTracks(originalTracks);
+      }
+    }
+  }, [yearData]);
+
   const showContent = () => {
-    return genreData === null ? (
-      authorData === null ? (
-        <Content tracks={originalTracks} />
-      ) : (
-        <Content tracks={useTracks} />
-      )
-    ) : (
-      <Content tracks={useTracks} />
-    );
+    if (genreData === null) {
+      if (authorData === null) {
+        if (yearData === null) {
+          return <Content tracks={originalTracks} />;
+        } else {
+          return <Content tracks={useTracks} />;
+        }
+      } else {
+        return <Content tracks={useTracks} />;
+      }
+    } else {
+      return <Content tracks={useTracks} />;
+    }
   };
 
   // filters
