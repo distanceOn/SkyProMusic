@@ -3,6 +3,7 @@ import { api } from "./services/api";
 import authSlice from "./slices/authSlice";
 import tracksSlice from "./slices/tracksSlice";
 import oneTrackSlice from "./slices/oneTrackSlice";
+import filterSlice from "./slices/filterSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     auth: authSlice,
     allTracks: tracksSlice,
     oneTrack: oneTrackSlice,
+    filter: filterSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

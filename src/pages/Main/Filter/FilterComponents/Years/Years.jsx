@@ -1,15 +1,32 @@
-import { useState } from "react";
 import s from "./Years.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getYearsState,
+  setYearsState,
+} from "../../../../../redux/slices/filterSlice";
+import { useEffect, useState } from "react";
 
 export default function Years() {
+  const dispatch = useDispatch();
+  const dateData = useSelector(getYearsState);
+
   const [date, setDate] = useState(null);
 
+  useEffect(() => {
+    setDate(dateData.payload.filter.years.newer);
+    console.log(dateData.payload.filter.years.newer);
+  }, [dateData]);
+
   const setNew = () => {
-    return date === true ? setDate(null) : setDate(true);
+    return date === true
+      ? dispatch(setYearsState(null))
+      : dispatch(setYearsState(true));
   };
 
   const setOld = () => {
-    return date === false ? setDate(null) : setDate(false);
+    return date === false
+      ? dispatch(setYearsState(null))
+      : dispatch(setYearsState(false));
   };
 
   return (
