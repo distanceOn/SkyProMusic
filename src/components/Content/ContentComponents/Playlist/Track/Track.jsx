@@ -20,7 +20,6 @@ export default function Track(props) {
       try {
         await refetch();
         setShowFirst(false);
-        console.log(trackData);
       } catch (error) {
         console.log(error);
       }

@@ -1,15 +1,20 @@
-import s from './Genres.module.css'
+import s from "./Genres.module.css";
 
-export default function Genres() {
+export default function Genres(props) {
+  const showList = () => {
+    if (props.genres !== undefined) {
+      return props.genres.map((genre, index) => {
+        return (
+          <li className={s.author} key={index}>
+            {genre}
+          </li>
+        );
+      });
+    }
+  };
   return (
     <div className={s.container}>
-      <ul className={s.authors}>
-        <li className={s.active}>Рок</li>
-        <li className={s.author}>Хип-хоп</li>
-        <li className={s.author}>Поп-музыка</li>
-        <li className={s.author}>Инди</li>
-        <li className={s.author}>Техно</li>
-      </ul>
+      <ul className={s.authors}>{showList()}</ul>
     </div>
-  )
+  );
 }

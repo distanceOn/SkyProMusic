@@ -1,18 +1,21 @@
-import s from './Authors.module.css'
+import s from "./Authors.module.css";
 
-export default function Authors() {
+export default function Authors(props) {
+  const showList = () => {
+    if (props.authors !== undefined) {
+      return props.authors.map((author, index) => {
+        return (
+          <li className={s.author} key={index}>
+            {author}
+          </li>
+        );
+      });
+    }
+  };
+
   return (
     <div className={s.container}>
-      <ul className={s.authors}>
-        <li className={s.active}>Michael Jackson</li>
-        <li className={s.author}>Frank Sinatra</li>
-        <li className={s.author}>Calvin Harris</li>
-        <li className={s.author}>Zhu</li>
-        <li className={s.author}>Arctic Monkeys</li>
-        <li className={s.author}>Arctic Monkeys</li>
-        <li className={s.author}>Arctic Monkeys</li>
-        <li className={s.author}>Arctic Monkeys</li>
-      </ul>
+      <ul className={s.authors}>{showList()}</ul>
     </div>
-  )
+  );
 }
