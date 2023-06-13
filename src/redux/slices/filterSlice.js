@@ -4,6 +4,9 @@ const initialState = {
   years: {
     newer: null,
   },
+  authors: {
+    author: null,
+  },
 };
 
 export const filterSlice = createSlice({
@@ -19,8 +22,18 @@ export const filterSlice = createSlice({
         },
       };
     },
+    getAuthorState: (state) => state.authors.author,
+    setAuthorState: (state, action) => {
+      return {
+        ...state,
+        authors: {
+          author: action.payload,
+        },
+      };
+    },
   },
 });
 
-export const { getYearsState, setYearsState } = filterSlice.actions;
+export const { getYearsState, setYearsState, getAuthorState, setAuthorState } =
+  filterSlice.actions;
 export default filterSlice.reducer;

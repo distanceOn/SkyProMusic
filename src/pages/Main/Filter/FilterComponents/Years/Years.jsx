@@ -8,14 +8,14 @@ import { useEffect, useState } from "react";
 
 export default function Years() {
   const dispatch = useDispatch();
-  const dateData = useSelector(getYearsState);
+  const dateSelectionData = useSelector(getYearsState);
 
   const [date, setDate] = useState(null);
 
   useEffect(() => {
-    setDate(dateData.payload.filter.years.newer);
-    console.log(dateData.payload.filter.years.newer);
-  }, [dateData]);
+    setDate(dateSelectionData.payload.filter.years.newer);
+    console.log(dateSelectionData.payload.filter.years.newer);
+  }, [dateSelectionData]);
 
   const setNew = () => {
     return date === true
