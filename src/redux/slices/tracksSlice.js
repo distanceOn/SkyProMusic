@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   tracks: [],
+  playlistTracks: [],
   activeItem: {},
 };
 
@@ -17,6 +18,13 @@ export const tracksSlice = createSlice({
         tracks: action.payload,
       };
     },
+    getPlaylistTracks: (state) => state.playlistTracks,
+    setPlaylistTracks: (state, action) => {
+      return {
+        ...state,
+        playlistTracks: action.payload,
+      };
+    },
     setActiveItem: (state, action) => {
       return {
         ...state,
@@ -27,6 +35,12 @@ export const tracksSlice = createSlice({
   },
 });
 
-export const { getTracks, setTracks, setActiveItem, getActiveItem } =
-  tracksSlice.actions;
+export const {
+  getTracks,
+  setTracks,
+  getPlaylistTracks,
+  setPlaylistTracks,
+  setActiveItem,
+  getActiveItem,
+} = tracksSlice.actions;
 export default tracksSlice.reducer;

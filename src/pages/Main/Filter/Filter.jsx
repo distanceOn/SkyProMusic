@@ -17,9 +17,7 @@ export default function Filter() {
   const [tracks, setTracks] = useState([]);
 
   useEffect(() => {
-    if (allTracks.payload.allTracks.tracks.length !== 0) {
-      setTracks(allTracks.payload.allTracks.tracks);
-    }
+    setTracks(allTracks.payload.allTracks.tracks);
   }, [allTracks]);
 
   const [authors, setAuthors] = useState();

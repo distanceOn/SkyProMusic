@@ -10,6 +10,12 @@ import { useTracksQuery } from "../../redux/services/api";
 import { useDispatch, useSelector } from "react-redux";
 import { getTracks, setTracks } from "../../redux/slices/tracksSlice";
 import { useEffect, useState } from "react";
+import {
+  getGenreState,
+  setGenreState,
+  setSelectionGenreState,
+} from "../../redux/slices/filterSlice";
+import { useLocation } from "react-router-dom";
 
 export default function Main() {
   const { data: allTracksData, refetch } = useTracksQuery();
@@ -35,7 +41,18 @@ export default function Main() {
 
   const tracksData = useSelector(getTracks);
 
-  const tracks = tracksData.payload.allTracks.tracks;
+  const [originalTracks, setOriginalTracks] = useState([]);
+  const [useTracks, setUseTracks] = useState([]);
+
+  // const tracks = tracksData.payload.allTracks.tracks;
+
+  useEffect(() => {
+    if (tracksData.payload.allTracks.tracks.length > 0) {
+      if (originalTracks.length === 0) {
+        setOriginalTracks(tracksData.payload.allTracks.tracks);
+      }
+    }
+  }, [tracksData]);
 
   const dispatch = useDispatch();
 
@@ -49,9 +66,46 @@ export default function Main() {
         }
       };
       getAllTracks();
+      console.log(useTracks);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, dispatch]);
+
+  // filters
+  const genreFilter = useSelector(getGenreState);
+
+  const [genreData, setGenreData] = useState(null);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    dispatch(setGenreState(null));
+    dispatch(setSelectionGenreState(null));
+  }, [location]);
+
+  useEffect(() => {
+    setGenreData(genreFilter.payload.filter.genres.genre);
+  }, [genreFilter]);
+
+  useEffect(() => {
+    const filteredTracks = originalTracks.filter((track) => {
+      return track.genre === genreData;
+    });
+
+    setUseTracks(filteredTracks);
+
+    console.log("ААААААААААААААААААААААААА", useTracks);
+  }, [genreData]);
+
+  const showContent = () => {
+    return genreData === null ? (
+      <Content tracks={originalTracks} />
+    ) : (
+      <Content tracks={useTracks} />
+    );
+  };
+
+  // filters
 
   return (
     <div className={s.wrapper}>
@@ -62,7 +116,7 @@ export default function Main() {
             <Search />
             <Header value="Треки" />
             <Filter />
-            <Content tracks={tracks} />
+            {showContent()}
           </div>
           <Sidebar playlists />
         </div>
