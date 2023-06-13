@@ -3,11 +3,19 @@ import s from "./Authors.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAuthorState,
+  getSelectionAuthorState,
   setAuthorState,
+  setSelectionAuthorState,
 } from "../../../../../redux/slices/filterSlice";
 
 export default function Authors(props) {
+  const isActiveData = useSelector(getSelectionAuthorState);
+
   const [isActive, setIsActive] = useState(null);
+
+  useEffect(() => {
+    setIsActive(isActiveData.payload.filter.selections.author);
+  }, [isActiveData]);
 
   const dispatch = useDispatch();
   const authorSelectionData = useSelector(getAuthorState);
@@ -26,7 +34,7 @@ export default function Authors(props) {
     if (props.authors !== undefined) {
       return props.authors.map((author, index) => {
         const handleActive = () => {
-          setIsActive(isActive === index ? null : index);
+          dispatch(setSelectionAuthorState(isActive === index ? null : index));
           dispatch(setAuthorState(authorData === author ? null : author));
         };
         return (

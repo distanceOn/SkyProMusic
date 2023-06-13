@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  selections: {
+    author: null,
+    genre: null,
+  },
   years: {
     newer: null,
   },
@@ -22,6 +26,7 @@ export const filterSlice = createSlice({
         },
       };
     },
+
     getAuthorState: (state) => state.authors.author,
     setAuthorState: (state, action) => {
       return {
@@ -31,9 +36,24 @@ export const filterSlice = createSlice({
         },
       };
     },
+    getSelectionAuthorState: (state) => state.selections.author,
+    setSelectionAuthorState: (state, action) => {
+      return {
+        ...state,
+        selections: {
+          author: action.payload,
+        },
+      };
+    },
   },
 });
 
-export const { getYearsState, setYearsState, getAuthorState, setAuthorState } =
-  filterSlice.actions;
+export const {
+  getYearsState,
+  setYearsState,
+  getSelectionAuthorState,
+  setSelectionAuthorState,
+  getAuthorState,
+  setAuthorState,
+} = filterSlice.actions;
 export default filterSlice.reducer;
