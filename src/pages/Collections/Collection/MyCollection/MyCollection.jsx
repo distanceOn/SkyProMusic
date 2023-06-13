@@ -7,7 +7,10 @@ import Sidebar from "../../../../components/Sidebar/Sidebar";
 import Bar from "../../../../components/Bar/Bar";
 import { useFavoriteTracksQuery } from "../../../../redux/services/api";
 import { useDispatch, useSelector } from "react-redux";
-import { getTracks, setTracks } from "../../../../redux/slices/tracksSlice";
+import {
+  getPlaylistTracks,
+  setPlaylistTracks,
+} from "../../../../redux/slices/tracksSlice";
 import { useEffect, useState } from "react";
 
 export default function MyCollection(props) {
@@ -32,9 +35,9 @@ export default function MyCollection(props) {
     setData(favoriteData);
   }, [favoriteData]);
 
-  const tracksData = useSelector(getTracks);
+  const tracksData = useSelector(getPlaylistTracks);
 
-  const tracks = tracksData.payload.allTracks.tracks;
+  const tracks = tracksData.payload.allTracks.playlistTracks;
 
   const dispatch = useDispatch();
 
@@ -42,7 +45,7 @@ export default function MyCollection(props) {
     if (data !== undefined) {
       const getAllTracks = async () => {
         try {
-          dispatch(setTracks(data));
+          dispatch(setPlaylistTracks(data));
         } catch (error) {
           console.log(error);
         }

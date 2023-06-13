@@ -11,9 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTracks, setTracks } from "../../redux/slices/tracksSlice";
 import { useEffect, useState } from "react";
 import {
+  getAuthorState,
   getGenreState,
+  setAuthorState,
   setGenreState,
+  setSelectionAuthorState,
   setSelectionGenreState,
+  setYearsState,
 } from "../../redux/slices/filterSlice";
 import { useLocation } from "react-router-dom";
 
@@ -50,6 +54,7 @@ export default function Main() {
     if (tracksData.payload.allTracks.tracks.length > 0) {
       if (originalTracks.length === 0) {
         setOriginalTracks(tracksData.payload.allTracks.tracks);
+        console.log(originalTracks);
       }
     }
   }, [tracksData]);
@@ -72,16 +77,20 @@ export default function Main() {
   }, [data, dispatch]);
 
   // filters
-  const genreFilter = useSelector(getGenreState);
-
-  const [genreData, setGenreData] = useState(null);
 
   const location = useLocation();
 
   useEffect(() => {
     dispatch(setGenreState(null));
     dispatch(setSelectionGenreState(null));
+    dispatch(setAuthorState(null));
+    dispatch(setSelectionAuthorState(null));
+    dispatch(setYearsState(null));
   }, [location]);
+
+  const genreFilter = useSelector(getGenreState);
+
+  const [genreData, setGenreData] = useState(null);
 
   useEffect(() => {
     setGenreData(genreFilter.payload.filter.genres.genre);
@@ -97,9 +106,32 @@ export default function Main() {
     console.log("ААААААААААААААААААААААААА", useTracks);
   }, [genreData]);
 
+  const authorFilter = useSelector(getAuthorState);
+
+  const [authorData, setAuthorData] = useState(null);
+
+  useEffect(() => {
+    setAuthorData(authorFilter.payload.filter.authors.author);
+    console.log(authorFilter.payload.filter.authors.author);
+  }, [authorFilter]);
+
+  useEffect(() => {
+    const filteredTracks = originalTracks.filter((track) => {
+      return track.author === authorData;
+    });
+
+    setUseTracks(filteredTracks);
+
+    console.log("ААААААААААААААААААААААААА", useTracks);
+  }, [authorData]);
+
   const showContent = () => {
     return genreData === null ? (
-      <Content tracks={originalTracks} />
+      authorData === null ? (
+        <Content tracks={originalTracks} />
+      ) : (
+        <Content tracks={useTracks} />
+      )
     ) : (
       <Content tracks={useTracks} />
     );
