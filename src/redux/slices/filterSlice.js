@@ -11,6 +11,9 @@ const initialState = {
   authors: {
     author: null,
   },
+  genres: {
+    genre: null,
+  },
 };
 
 export const filterSlice = createSlice({
@@ -42,6 +45,26 @@ export const filterSlice = createSlice({
         ...state,
         selections: {
           author: action.payload,
+          genre: state.selections.genre,
+        },
+      };
+    },
+    getGenreState: (state) => state.genres.genre,
+    setGenreState: (state, action) => {
+      return {
+        ...state,
+        genres: {
+          genre: action.payload,
+        },
+      };
+    },
+    getSelectionGenreState: (state) => state.selections.genre,
+    setSelectionGenreState: (state, action) => {
+      return {
+        ...state,
+        selections: {
+          author: state.selections.author,
+          genre: action.payload,
         },
       };
     },
@@ -55,5 +78,9 @@ export const {
   setSelectionAuthorState,
   getAuthorState,
   setAuthorState,
+  getGenreState,
+  setGenreState,
+  getSelectionGenreState,
+  setSelectionGenreState,
 } = filterSlice.actions;
 export default filterSlice.reducer;

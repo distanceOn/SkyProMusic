@@ -13,9 +13,13 @@ export default function AppRoutes() {
   const [intervalId, setIntervalId] = useState(null);
 
   const refreshToken = async () => {
-    const accessToken = await userRefreshToken({ refresh: refresh });
-    localStorage.setItem("access", accessToken.data.access);
-    console.log(localStorage);
+    try {
+      const accessToken = await userRefreshToken({ refresh: refresh });
+      localStorage.setItem("access", accessToken.data.access);
+      console.log(localStorage);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const startInterval = () => {
