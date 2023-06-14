@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# SkyProMusic
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Реализация музыкального сервиса, аналогичного «Яндекс.Музыке».
 
-## Available Scripts
+## Состав проекта
 
-In the project directory, you can run:
+Проект состоит из двух частей: фронтенд и бэкенд.
 
-### `npm start`
+### Фронтенд-часть
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Верстка](https://drive.google.com/file/d/1X4NXJdNTvsmBMQqc5dEWR7Ml_UCvW_9T/view)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[Верстка экрана логина или регистрации](https://drive.google.com/file/d/16zzbEkS2ZDk75V60JJ2NGRCXjwJMo44e/view)
 
-### `npm test`
+#### Шрифт:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[example stratos font (6).zip](<https://s3-us-west-2.amazonaws.com/secure.notion-static.com/85a9bcf1-ec70-4640-8c7f-5472a0b3db82/example_stratos_font_(6).zip>)
 
-### `npm run build`
+### Бэкенд
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Бекэнд часть](https://github.com/Stasy-cmd/music_proj)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Основные возможности бэкенда:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Регистрация (log in)
+Возможность залогиниться и разлогиниться (sign up, sign out)
+Витрина с доступными треками
+Встроенный в приложение плеер (прослушивание музыки, постановка на паузу и снятие с нее, перемотка, повтор трека, shuffle плейлиста)
+Добавление трека в избранное
+Список подборок
 
-### `npm run eject`
+## Список экранов проекта
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Стартовый экран — экран «Войти».
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Пользователю предлагается ввести логин и пароль, если он уже зарегистрирован, и нажать «Войти». Если пользователь еще не зарегистрирован, ему необходимо нажать «Зарегистрироваться».
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Экран регистрации
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+На экране регистрации пользователь придумывает логин и пароль, а также повторяет пароль. После этого он нажимает «Зарегистрироваться». После регистрации пользователь снова попадает на стартовый экран «Войти», где вводит логин и пароль заново.
 
-## Learn More
+### Экран «Треки»
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Главный экран, на котором отражаются все доступные треки. Во время загрузки показывается экран скелетона.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Изначально нижний плеер скрыт. Он показывается, только когда пользователь нажимает на любой из треков. При перезагрузке страницы плеер тоже скрыт.
 
-### Code Splitting
+На главном экране реализуется сортировка треков. Пользователь вводит название трека в строке «Поиск», и происходит их фильтрация по названию. Это значит, что, если пользователь ввел «tro», ему выдаст трек с названием «Elektro» и все треки, в названиях которых есть строка tro: «Troelf», «FooTroBar».
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Поиск по году выпуска
 
-### Analyzing the Bundle Size
+Осуществляется с помощью сортировки без притягивания бэкенда. Пользователь может сортировать треки двумя способами: от старых к новым и от новых к старым.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Поиск по исполнителю
 
-### Making a Progressive Web App
+Осуществляется с помощью бэкенда. При нажатии на «исполнителю» пользователь видит выпадающее меню, в котором показываются только первые пять элементов (остальные нужно скроллить)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Пользователь может выбрать несколько исполнителей одновременно.
 
-### Advanced Configuration
+#### Поиск по жанру
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Осуществляется с помощью бэкенда. При нажатии на «жанру» пользователь видит выпадающее меню, в котором показываются только первые пять элементов (остальные нужно скроллить)
 
-### Deployment
+Пользователь может выбрать несколько жанров одновременно.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Экраны подборок: «Плейлист дня», «100 танцевальных хитов», «Инди заряд»
 
-### `npm run build` fails to minify
+В каждой подборке отображается список треков, которые в нее входят.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Поиск по исполнителю, жанру, году выпуска не осуществляется.
+
+### Экран «Мои треки»
+
+Экран с подборкой треков, которые пользователь добавил в избранное.
