@@ -1,0 +1,99 @@
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  background-color: #383838;
+}
+
+.container {
+  max-width: 1920px;
+  height: 100vh;
+  position: relative;
+  background-color: #181818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+._404 {
+  cursor: default;
+  height: 200px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 160px;
+
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 3px;
+}
+
+.div {
+  cursor: default;
+  height: 52px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  margin-bottom: 19px;
+}
+.p {
+  cursor: default;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0;
+
+  color: #ffffff;
+}
+
+.smile {
+  width: 52px;
+  height: 52px;
+}
+
+.text {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.003em;
+
+  color: #4e4e4e;
+
+  margin-bottom: 36px;
+}
+
+.button {
+  width: 278px;
+  height: 52px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+  letter-spacing: -0.003em;
+
+  color: #ffffff;
+  background: #580ea2;
+  border-radius: 6px;
+  outline: none;
+  border: transparent;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  box-shadow: 0 0 10px 8px rgb(247, 201, 0, 0.2);
+}

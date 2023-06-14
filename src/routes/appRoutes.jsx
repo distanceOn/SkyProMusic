@@ -4,6 +4,7 @@ import Main from "../pages/Main/Main";
 import Auth from "../pages/Auth/Auth";
 import { useRefreshTokenMutation } from "../redux/services/api";
 import Collections from "../pages/Collections/Collections";
+import NotFound from "../pages/404/NotFound";
 
 export default function AppRoutes() {
   const refresh = localStorage.getItem("refresh");
@@ -69,6 +70,7 @@ export default function AppRoutes() {
         element={<Collections collection={"favorite"} />}
         index
       />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
