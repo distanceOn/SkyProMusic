@@ -40,7 +40,7 @@ export default function Playlist(props) {
   // }, [data, dispatch]);
 
   const showTracks = () => {
-    if (props.tracks.length > 0) {
+    if (props.tracks && props.tracks.length > 0) {
       const handleItemClick = (id) => {
         dispatch(setActiveItem(id));
       };

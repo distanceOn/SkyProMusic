@@ -24,7 +24,8 @@ import { useLocation } from "react-router-dom";
 
 export default function Main() {
   const { data: allTracksData, refetch } = useTracksQuery();
-  const dispatch = useDispatch();
+
+  const [data, setData] = useState(undefined);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,19 +37,45 @@ export default function Main() {
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refetch]);
 
   useEffect(() => {
-    if (allTracksData !== undefined) {
-      dispatch(setTracks(allTracksData));
-      console.log(allTracksData);
-    }
-  }, [allTracksData, dispatch]);
+    setData(allTracksData);
+  }, [allTracksData]);
 
   const tracksData = useSelector(getTracks);
-  const originalTracks = tracksData.payload.allTracks.tracks;
 
-  const [filteredTracks, setFilteredTracks] = useState(null);
+  const [originalTracks, setOriginalTracks] = useState([]);
+  const [useTracks, setUseTracks] = useState([]);
+
+  useEffect(() => {
+    if (tracksData.payload.allTracks.tracks.length > 0) {
+      if (originalTracks.length === 0) {
+        setOriginalTracks(tracksData.payload.allTracks.tracks);
+        console.log(originalTracks);
+      }
+    }
+  }, [tracksData]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (data !== undefined) {
+      const getAllTracks = async () => {
+        try {
+          dispatch(setTracks(data));
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getAllTracks();
+      console.log(useTracks);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, dispatch]);
+
+  // filters
 
   const location = useLocation();
 
@@ -58,19 +85,47 @@ export default function Main() {
     dispatch(setAuthorState(null));
     dispatch(setSelectionAuthorState(null));
     dispatch(setYearsState(null));
-  }, [location, dispatch]);
+  }, [location]);
 
-  const genreFilter = useSelector(getGenreState);
-  const genreData = genreFilter.payload.filter.genres.genre;
-
-  const authorFilter = useSelector(getAuthorState);
-  const authorData = authorFilter.payload.filter.authors.author;
-
-  const yearFilter = useSelector(getYearsState);
-  const yearData = yearFilter.payload.filter.years.newer;
+  const [filteredTracks, setFilteredTracks] = useState(null);
 
   useEffect(() => {
-    let filteredData = originalTracks;
+    if (filteredTracks === null) {
+      setUseTracks(originalTracks);
+    } else {
+      setUseTracks(filteredTracks);
+    }
+  }, [filteredTracks]);
+
+  const genreFilter = useSelector(getGenreState);
+
+  const [genreData, setGenreData] = useState(null);
+
+  useEffect(() => {
+    setGenreData(genreFilter.payload.filter.genres.genre);
+  }, [genreFilter]);
+
+  const authorFilter = useSelector(getAuthorState);
+
+  const [authorData, setAuthorData] = useState(null);
+
+  useEffect(() => {
+    setAuthorData(authorFilter.payload.filter.authors.author);
+    console.log(authorFilter.payload.filter.authors.author);
+  }, [authorFilter]);
+
+  const yearFilter = useSelector(getYearsState);
+
+  const [yearData, setYearData] = useState(null);
+
+  useEffect(() => {
+    setYearData(yearFilter.payload.filter.years.newer);
+    console.log(yearFilter.payload.filter.years.newer);
+  }, [yearFilter]);
+
+  useEffect(() => {
+    let filteredData =
+      filteredTracks === null ? originalTracks : filteredTracks;
 
     if (genreData !== null) {
       filteredData = filteredData.filter((track) => track.genre === genreData);
@@ -106,19 +161,25 @@ export default function Main() {
         filter.push(...tracksNoYears);
       }
 
-      filteredData = yearData ? filter : filter.reverse();
+      if (yearData) {
+        filteredData = filter;
+      } else if (!yearData) {
+        filteredData = filter.reverse();
+      }
     }
 
     setFilteredTracks(filteredData);
-  }, [genreData, authorData, yearData, originalTracks]);
+  }, [genreData, authorData, yearData]);
 
   const showContent = () => {
-    const tracksToShow =
-      genreData === null && authorData === null && yearData === null
-        ? originalTracks
-        : filteredTracks;
-    return <Content tracks={tracksToShow} />;
+    if (genreData === null && authorData === null && yearData === null) {
+      return <Content tracks={originalTracks} />;
+    } else {
+      return <Content tracks={useTracks} />;
+    }
   };
+
+  // filters
 
   return (
     <div className={s.wrapper}>
