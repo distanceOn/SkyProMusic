@@ -5,6 +5,7 @@ import s from "./BarPlayerBlock.module.css";
 import AudioContext from "../../../../contexts/audioContext";
 import { getTracks, setActiveItem } from "../../../../redux/slices/tracksSlice";
 import { useDispatch, useSelector } from "react-redux";
+import TemplateAudio from "./audio/BobbyMarleniDropping.mp3";
 
 export default function BarPlayerBlock() {
   const audioRef = useRef(null);
@@ -139,21 +140,13 @@ export default function BarPlayerBlock() {
       <div className={s.bar__playerBlock}>
         <audio
           ref={audioRef}
-          src={
-            currentAudio
-              ? currentAudio.track_file
-              : "/audio/BobbyMarleniDropping.mp3"
-          }
+          src={currentAudio ? currentAudio.track_file : TemplateAudio}
           onTimeUpdate={handleTimeUpdate}
           onCanPlayThrough={handleCanPlayThrough}
           onEnded={handleNextTrack}
         >
           <source
-            src={
-              currentAudio
-                ? currentAudio.track_file
-                : "/audio/BobbyMarleniDropping.mp3"
-            }
+            src={currentAudio ? currentAudio.track_file : TemplateAudio}
             type="audio/mpeg"
           />
           <track kind="captions" />
