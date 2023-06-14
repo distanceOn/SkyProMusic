@@ -11,7 +11,7 @@ import SkeletonTrack from "./SkeletonTrack/SkeletonTrack";
 export default function Track(props) {
   const id = props.id;
 
-  const { handleSetNewAudio } = useContext(AudioContext);
+  const { handleSetNewAudio, searchName } = useContext(AudioContext);
 
   const { data: trackData, refetch } = useOneTrackQuery(id);
 
@@ -57,7 +57,24 @@ export default function Track(props) {
   return showFirst ? (
     <SkeletonTrack />
   ) : (
-    <div>
+    <div
+      style={{
+        display: (() => {
+          if (searchName !== null) {
+            const display = searchName.split("");
+            const name = props.nameTitle.split("");
+            for (let i = 0; i < display.length; i++) {
+              if (display[i] !== name[i]) {
+                return "none";
+              }
+            }
+            return "block";
+          } else {
+            return "block";
+          }
+        })(),
+      }}
+    >
       <div
         className={`${props.item} ${props.className}`}
         onClick={() => {

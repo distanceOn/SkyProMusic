@@ -5,7 +5,6 @@ const AudioContext = React.createContext();
 
 export const AudioProvider = ({ children }) => {
   const [audio, setAudio] = useState(null);
-  const [prevAudio, setPrevAudio] = useState(null);
   const [audioParams, setAudioParams] = useState({ play: false, pause: true });
 
   useEffect(() => {
@@ -15,10 +14,6 @@ export const AudioProvider = ({ children }) => {
   useEffect(() => {
     console.log("Params ", audioParams);
   }, [audioParams]);
-
-  useEffect(() => {
-    console.log("PREV", prevAudio);
-  }, [prevAudio]);
 
   const handleSetNewAudio = (track) => {
     if (audio === null) {
@@ -31,15 +26,22 @@ export const AudioProvider = ({ children }) => {
         setAudioParams({ play: true, pause: false });
       }
     } else {
-      setPrevAudio(audio);
       setAudio(track);
       setAudioParams({ play: true, pause: false });
     }
   };
 
+  const [searchName, setSearchName] = useState(null);
+
   return (
     <AudioContext.Provider
-      value={{ audio, handleSetNewAudio, audioParams, prevAudio }}
+      value={{
+        audio,
+        handleSetNewAudio,
+        audioParams,
+        searchName,
+        setSearchName,
+      }}
     >
       {children}
     </AudioContext.Provider>

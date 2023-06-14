@@ -1,6 +1,18 @@
+import { useContext, useRef } from "react";
 import s from "./Search.module.css";
+import AudioContext from "../../contexts/audioContext";
 
 export default function Search() {
+  const { setSearchName } = useContext(AudioContext);
+
+  const searchRef = useRef();
+  const searchTrack = () => {
+    if (searchRef.current.value) {
+      setSearchName(searchRef.current.value);
+    } else {
+      setSearchName(null);
+    }
+  };
   return (
     <div className={s.search}>
       <svg
@@ -25,10 +37,12 @@ export default function Search() {
         />
       </svg>
       <input
+        ref={searchRef}
         className={s.text}
         type="search"
         placeholder="Поиск"
         name="search"
+        onChange={searchTrack}
       />
     </div>
   );
