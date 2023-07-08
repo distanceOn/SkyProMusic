@@ -91,11 +91,12 @@ export default function BarPlayerBlock() {
   };
 
   const handlePause = () => {
-    setAudioParams({ play: false, pause: true });
-
-    audioRef.current.pause();
-    setIsPlaying(false);
-    localStorage.setItem("trackPausedState", "true");
+    if (isPlaying) {
+      setAudioParams({ play: false, pause: true });
+      audioRef.current.pause();
+      setIsPlaying(false);
+      localStorage.setItem("trackPausedState", "true");
+    }
   };
 
   const handleTimeUpdate = () => {
