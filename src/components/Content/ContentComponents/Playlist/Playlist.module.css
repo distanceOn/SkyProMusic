@@ -4,9 +4,10 @@
   gap: 12px;
   overflow: auto;
   overflow-x: hidden;
-  max-height: 540px;
+  max-height: 46.5vh;
   padding: 10px 17px 24px 11px;
 }
+
 .playlist::-webkit-scrollbar {
   width: 8px;
 }

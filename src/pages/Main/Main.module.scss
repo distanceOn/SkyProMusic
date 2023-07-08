@@ -17,13 +17,9 @@
   flex: 1 1 auto;
   display: flex;
   justify-content: space-between;
-}
-.centerblock {
-  width: auto;
-  flex-grow: 3;
-  padding: 20px 40px 20px 111px;
-}
-.content {
-  display: flex;
-  flex-direction: column;
+  &__centerblock {
+    width: auto;
+    flex-grow: 3;
+    padding: 20px 40px 87px 111px;
+  }
 }
