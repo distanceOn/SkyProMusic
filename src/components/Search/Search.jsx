@@ -8,7 +8,7 @@ export default function Search() {
   const searchRef = useRef();
   const searchTrack = () => {
     if (searchRef.current.value) {
-      setSearchName(searchRef.current.value);
+      setSearchName(searchRef.current.value.toLowerCase());
     } else {
       setSearchName(null);
     }

@@ -54,13 +54,16 @@ export default function Track(props) {
 
   const [showFirst, setShowFirst] = useState(true);
 
+  const searchNameLower = searchName !== null ? searchName.toLowerCase() : null;
+
   return showFirst ? (
     <SkeletonTrack />
   ) : (
     <div
       style={{
         display:
-          searchName !== null && !props.nameTitle.startsWith(searchName)
+          searchNameLower !== null &&
+          !props.nameTitle.toLowerCase().startsWith(searchNameLower)
             ? "none"
             : "block",
       }}
