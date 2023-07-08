@@ -15,17 +15,19 @@ export default function PlayContent(props) {
     if (currentAudio !== null) {
       setName(currentAudio.name);
       setAuthor(currentAudio.author);
+    } else {
+      setName(null);
+      setAuthor(null);
     }
   }, [currentAudio]);
 
   return (
     <div>
-      (
       <div className={s.trackPlay__content}>
         <ContentCover />
         <div className={s.trackPlay__texts}>
-          <ContentTrack href="#" name={currentAudio ? name : "Ты та..."} />
-          <ContentAuthor href="#" name={currentAudio ? author : "Баста"} />
+          <ContentTrack href="#" name={name || "Ты та..."} />
+          <ContentAuthor href="#" name={author || "Баста"} />
         </div>
         <PlayLikeDis
           isLiked={props.isLiked}
@@ -33,7 +35,6 @@ export default function PlayContent(props) {
           id={props.id}
         />
       </div>
-      )
     </div>
   );
 }

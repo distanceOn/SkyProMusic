@@ -40,6 +40,7 @@ export const AudioProvider = ({ children }) => {
         setAudio,
         handleSetNewAudio,
         audioParams,
+        setAudioParams,
         searchName,
         setSearchName,
       }}
