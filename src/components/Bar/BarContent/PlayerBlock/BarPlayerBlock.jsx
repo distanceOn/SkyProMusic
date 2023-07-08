@@ -23,8 +23,14 @@ export default function BarPlayerBlock() {
 
   const handlePlay = () => {
     if (audioRef.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((error) => {
+          console.log("Error playing audio:", error);
+        });
     }
   };
 

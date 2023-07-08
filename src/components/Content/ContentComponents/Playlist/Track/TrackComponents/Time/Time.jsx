@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   useAddToFavoriteMutation,
   useRemoveFromFavoriteMutation,
@@ -7,27 +7,48 @@ import s from "./Time.module.scss";
 import AudioContext from "../../../../../../../contexts/audioContext";
 
 export default function Time(props) {
+  const [like, setLike] = useState(props.isLiked);
+
+  useEffect(() => {
+    setLike(
+      props.trackData.stared_user.some(
+        (element) => element.id === parseInt(localStorage.getItem("id"))
+      )
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const [addToFavorite] = useAddToFavoriteMutation();
   const [removeFromFavorite] = useRemoveFromFavoriteMutation();
-  const { isLiked: barIsLiked, setIsLiked: setBarIsLiked } =
-    useContext(AudioContext);
+  const {
+    isLiked: barIsLiked,
+    setIsLiked: setBarIsLiked,
+    audio,
+  } = useContext(AudioContext);
+
+  useEffect(() => {
+    if (audio === props.trackData) {
+      setLike(barIsLiked);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [barIsLiked, audio]);
 
   const handleLike = () => {
-    if (props.isLiked === false && barIsLiked === false) {
+    if (like === false && barIsLiked === false) {
       addToFavorite(props.id)
         .then((response) => {
           console.log(response);
-          props.setIsLiked(true);
+          setLike(true);
           setBarIsLiked(true);
         })
         .catch((error) => {
           console.log("Error adding to favourite:", error);
         });
-    } else if (props.isLiked === true && barIsLiked === true) {
+    } else if (like === true && barIsLiked === true) {
       removeFromFavorite(props.id)
         .then((response) => {
           console.log(response);
-          props.setIsLiked(false);
+          setLike(false);
           setBarIsLiked(false);
         })
         .catch((error) => {
@@ -43,7 +64,7 @@ export default function Time(props) {
         width="16"
         height="14"
         viewBox="0 0 16 14"
-        fill={props.isLiked === true ? "#AD61FF" : "transparent"}
+        fill={like === true ? "#AD61FF" : "transparent"}
         xmlns="http://www.w3.org/2000/svg"
       >
         <path

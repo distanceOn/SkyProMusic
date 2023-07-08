@@ -28,8 +28,6 @@ export default function Track(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refetch]);
 
-  const [isLiked, setIsLiked] = useState(false);
-
   const [track, setTrack] = useState(null);
 
   const handleItemClick = () => {
@@ -39,11 +37,6 @@ export default function Track(props) {
   useEffect(() => {
     if (trackData !== undefined) {
       setTrack(trackData);
-      setIsLiked(
-        trackData.stared_user.some(
-          (element) => element.id === parseInt(localStorage.getItem("id"))
-        )
-      );
 
       if (track !== null) {
         setTrack(track);
@@ -85,12 +78,7 @@ export default function Track(props) {
           />
           <Author href={props.hrefAuthor} name={props.nameAuthor} />
           <Album href={props.hrefAlbum} name={props.nameAlbum} />
-          <Time
-            time={props.time}
-            id={props.id}
-            isLiked={isLiked}
-            setIsLiked={setIsLiked}
-          />
+          <Time time={props.time} id={props.id} trackData={trackData} />
         </div>
       </div>
     </div>
