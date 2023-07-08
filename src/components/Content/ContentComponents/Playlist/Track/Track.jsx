@@ -59,20 +59,10 @@ export default function Track(props) {
   ) : (
     <div
       style={{
-        display: (() => {
-          if (searchName !== null) {
-            const display = searchName.split("");
-            const name = props.nameTitle.split("");
-            for (let i = 0; i < display.length; i++) {
-              if (display[i] !== name[i]) {
-                return "none";
-              }
-            }
-            return "block";
-          } else {
-            return "block";
-          }
-        })(),
+        display:
+          searchName !== null && !props.nameTitle.startsWith(searchName)
+            ? "none"
+            : "block",
       }}
     >
       <div
