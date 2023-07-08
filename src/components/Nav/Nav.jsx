@@ -1,16 +1,21 @@
 import s from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Logo from "../Imgs/Logo";
+import AudioContext from "../../contexts/audioContext";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { setAudioParams, setAudio } = useContext(AudioContext);
 
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleLogoutClick = () => {
+    setAudioParams({ play: false, pause: true });
+    setAudio(null);
+
     localStorage.clear();
   };
 

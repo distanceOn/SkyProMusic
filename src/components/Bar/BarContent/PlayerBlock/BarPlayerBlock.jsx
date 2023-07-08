@@ -16,10 +16,11 @@ export default function BarPlayerBlock() {
   const dispatch = useDispatch();
 
   const location = useLocation();
-  const { audio, setAudio, audioParams } = useContext(AudioContext);
+  const { audio, setAudio, audioParams, setAudioParams } =
+    useContext(AudioContext);
 
   useEffect(() => {
-    if (audioParams.play === true) {
+    if (audio && audioParams.play === true) {
       handlePlay();
     } else {
       handlePause();
@@ -36,11 +37,13 @@ export default function BarPlayerBlock() {
 
   useEffect(() => {
     if (audio !== null) {
-      setIsLiked(
-        audio.stared_user.some(
-          (element) => element.id === parseInt(localStorage.getItem("id"))
-        )
-      );
+      if (audio.stared_user) {
+        setIsLiked(
+          audio.stared_user.some(
+            (element) => element.id === parseInt(localStorage.getItem("id"))
+          )
+        );
+      }
     }
   }, [audio]);
 
@@ -63,30 +66,33 @@ export default function BarPlayerBlock() {
     }
 
     if (savedPausedState && audioParams.pause === true) {
-      audioParams.play = false;
-      audioParams.pause = true;
+      setAudioParams({ play: false, pause: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handlePlay = () => {
-    audioParams.play = true;
-    audioParams.pause = false;
-    if (audioParams.play === true) {
-      audioRef.current.play().catch((error) => {
-        if (error.name === "NotAllowedError") {
-          console.log("Audio playback was prevented by the browser.");
-        } else {
-          console.log("Error playing audio:", error.message);
-        }
-      });
-      setIsPlaying(true);
+    if (audio) {
+      setAudioParams({ play: true, pause: false });
+
+      if (audioParams.play === true) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    } else {
+      setAudio(audioRef.current);
+      setAudioParams({ play: true, pause: false });
+
+      if (audioParams.play === true) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
     }
   };
 
   const handlePause = () => {
-    audioParams.play = false;
-    audioParams.pause = true;
+    setAudioParams({ play: false, pause: true });
+
     audioRef.current.pause();
     setIsPlaying(false);
     localStorage.setItem("trackPausedState", "true");

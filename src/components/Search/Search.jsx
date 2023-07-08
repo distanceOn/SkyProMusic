@@ -1,6 +1,7 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import s from "./Search.module.css";
 import AudioContext from "../../contexts/audioContext";
+import { useLocation } from "react-router-dom";
 
 export default function Search() {
   const { setSearchName } = useContext(AudioContext);
@@ -8,11 +9,17 @@ export default function Search() {
   const searchRef = useRef();
   const searchTrack = () => {
     if (searchRef.current.value) {
-      setSearchName(searchRef.current.value);
+      setSearchName(searchRef.current.value.toLowerCase());
     } else {
       setSearchName(null);
     }
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setSearchName(null);
+  }, [location, setSearchName]);
   return (
     <div className={s.search}>
       <svg

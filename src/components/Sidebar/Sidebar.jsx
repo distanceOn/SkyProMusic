@@ -5,6 +5,8 @@ import DayList1 from "../Imgs/playlist01.png";
 import DayList2 from "../Imgs/playlist02.png";
 
 import DayList3 from "../Imgs/playlist03.png";
+import { useContext } from "react";
+import AudioContext from "../../contexts/audioContext";
 
 export default function Sidebar(props) {
   const showPlaylists = (value) => {
@@ -32,8 +34,11 @@ export default function Sidebar(props) {
       ""
     );
   };
+  const { setAudioParams, setAudio } = useContext(AudioContext);
 
   const handleLogout = () => {
+    setAudioParams({ play: false, pause: true });
+    setAudio(null);
     localStorage.clear();
   };
 
