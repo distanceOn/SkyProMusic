@@ -6,7 +6,6 @@ import AudioContext from "../../../../contexts/audioContext";
 import { getTracks, setActiveItem } from "../../../../redux/slices/tracksSlice";
 import { useDispatch, useSelector } from "react-redux";
 import TemplateAudio from "./audio/BobbyMarleniDropping.mp3";
-import { useLocation } from "react-router-dom";
 
 export default function BarPlayerBlock() {
   const audioRef = useRef(null);
@@ -15,18 +14,8 @@ export default function BarPlayerBlock() {
 
   const dispatch = useDispatch();
 
-  const location = useLocation();
   const { audio, setAudio, audioParams, setAudioParams } =
     useContext(AudioContext);
-
-  useEffect(() => {
-    if (audio && audioParams.play === true) {
-      handlePlay();
-    } else {
-      handlePause();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location, audioParams]);
 
   const allTracksData = useSelector(getTracks);
   const allTracks = allTracksData.payload.allTracks.tracks;
@@ -72,44 +61,34 @@ export default function BarPlayerBlock() {
   }, []);
 
   const handlePlay = () => {
-    if (audio) {
-      setAudioParams({ play: true, pause: false });
-
-      if (audioParams.play === true) {
-        audioRef.current.play();
-        setIsPlaying(true);
-      }
-    } else {
-      setAudio(audioRef.current);
-      setAudioParams({ play: true, pause: false });
-
-      if (audioParams.play === true) {
-        audioRef.current.play();
-        setIsPlaying(true);
-      }
+    if (audioRef.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
     }
   };
 
   const handlePause = () => {
-    if (isPlaying) {
-      setAudioParams({ play: false, pause: true });
+    if (audioRef.current) {
       audioRef.current.pause();
       setIsPlaying(false);
-      localStorage.setItem("trackPausedState", "true");
     }
   };
 
   const handleTimeUpdate = () => {
-    const newTime = audioRef.current.currentTime;
-    setCurrentTime(newTime);
-    localStorage.setItem("currentTrackTime", newTime.toString());
+    if (audioRef.current) {
+      const newTime = audioRef.current.currentTime;
+      setCurrentTime(newTime);
+      localStorage.setItem("currentTrackTime", newTime.toString());
+    }
   };
 
   const handleSeek = (event) => {
     const time = parseFloat(event.target.value);
-    audioRef.current.currentTime = time;
-    setCurrentTime(time);
-    localStorage.setItem("currentTrackTime", time.toString());
+    if (audioRef.current) {
+      audioRef.current.currentTime = time;
+      setCurrentTime(time);
+      localStorage.setItem("currentTrackTime", time.toString());
+    }
   };
 
   const handleCanPlayThrough = () => {
