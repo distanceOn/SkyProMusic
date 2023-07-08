@@ -29,11 +29,7 @@ export default function PlayContent(props) {
           <ContentTrack href="#" name={name || "Ты та..."} />
           <ContentAuthor href="#" name={author || "Баста"} />
         </div>
-        <PlayLikeDis
-          isLiked={props.isLiked}
-          setIsLiked={props.setIsLiked}
-          id={props.id}
-        />
+        <PlayLikeDis id={props.id} />
       </div>
     </div>
   );

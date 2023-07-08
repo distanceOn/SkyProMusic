@@ -1,11 +1,22 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const AudioContext = React.createContext();
 
 export const AudioProvider = ({ children }) => {
   const [audio, setAudio] = useState(null);
   const [audioParams, setAudioParams] = useState({ play: false, pause: true });
+  const [searchName, setSearchName] = useState(null);
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    if (audio && audio.stared_user) {
+      setIsLiked(
+        audio.stared_user.some(
+          (element) => element.id === parseInt(localStorage.getItem("id"))
+        )
+      );
+    }
+  }, [audio]);
 
   useEffect(() => {
     console.log("audio ", audio);
@@ -31,8 +42,6 @@ export const AudioProvider = ({ children }) => {
     }
   };
 
-  const [searchName, setSearchName] = useState(null);
-
   return (
     <AudioContext.Provider
       value={{
@@ -43,6 +52,8 @@ export const AudioProvider = ({ children }) => {
         setAudioParams,
         searchName,
         setSearchName,
+        isLiked,
+        setIsLiked,
       }}
     >
       {children}
