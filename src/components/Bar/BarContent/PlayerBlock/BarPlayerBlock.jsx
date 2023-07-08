@@ -8,11 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import TemplateAudio from "./audio/BobbyMarleniDropping.mp3";
 
 export default function BarPlayerBlock() {
-  const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-
   const dispatch = useDispatch();
+  const audioRef = useRef(null);
 
   const { audio, setAudio, audioParams, setAudioParams } =
     useContext(AudioContext);
@@ -20,50 +17,26 @@ export default function BarPlayerBlock() {
   const allTracksData = useSelector(getTracks);
   const allTracks = allTracksData.payload.allTracks.tracks;
 
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
   const [playedTracks, setPlayedTracks] = useState([]);
-
-  const [isLiked, setIsLiked] = useState(false);
-
-  useEffect(() => {
-    if (audio !== null) {
-      if (audio.stared_user) {
-        setIsLiked(
-          audio.stared_user.some(
-            (element) => element.id === parseInt(localStorage.getItem("id"))
-          )
-        );
-      }
-    }
-  }, [audio]);
-
-  useEffect(() => {
-    if (audio !== null && audioParams.play === true) {
-      setAudio(audio);
-      setPlayedTracks((prevTracks) => [...prevTracks, audio]);
-      handlePlay();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [audio, audioParams.play]);
-
-  useEffect(() => {
-    const savedTime = localStorage.getItem("currentTrackTime");
-    const savedPausedState = localStorage.getItem("trackPausedState");
-
-    if (savedTime && audioRef.current) {
-      audioRef.current.currentTime = parseFloat(savedTime);
-      setCurrentTime(parseFloat(savedTime));
-    }
-
-    if (savedPausedState && audioParams.pause === true) {
-      setAudioParams({ play: false, pause: true });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handlePlay = () => {
     if (audioRef.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((error) => {
+          console.log("Error playing audio:", error);
+        });
+    }
+  };
+
+  const handleCanPlayThrough = () => {
+    if (isPlaying && audioParams.play === true) {
+      handlePlay();
     }
   };
 
@@ -88,12 +61,6 @@ export default function BarPlayerBlock() {
       audioRef.current.currentTime = time;
       setCurrentTime(time);
       localStorage.setItem("currentTrackTime", time.toString());
-    }
-  };
-
-  const handleCanPlayThrough = () => {
-    if (isPlaying && audioParams.play === true) {
-      handlePlay();
     }
   };
 
@@ -137,6 +104,30 @@ export default function BarPlayerBlock() {
     }
   };
 
+  useEffect(() => {
+    if (audio !== null && audioParams.play === true) {
+      setAudio(audio);
+      setPlayedTracks((prevTracks) => [...prevTracks, audio]);
+      handlePlay();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [audio, audioParams.play]);
+
+  useEffect(() => {
+    const savedTime = localStorage.getItem("currentTrackTime");
+    const savedPausedState = localStorage.getItem("trackPausedState");
+
+    if (savedTime && audioRef.current) {
+      audioRef.current.currentTime = parseFloat(savedTime);
+      setCurrentTime(parseFloat(savedTime));
+    }
+
+    if (savedPausedState && audioParams.pause === true) {
+      setAudioParams({ play: false, pause: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={s.bar__content}>
       <input
@@ -168,8 +159,6 @@ export default function BarPlayerBlock() {
           handlePause={handlePause}
           isPlaying={isPlaying}
           currentAudio={audio}
-          isLiked={isLiked}
-          setIsLiked={setIsLiked}
           id={audio !== null ? audio.id : undefined}
         />
         <Volume />

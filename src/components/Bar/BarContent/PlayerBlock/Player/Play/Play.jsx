@@ -4,12 +4,7 @@ import s from "./Play.module.scss";
 export default function Play(props) {
   return (
     <div className={s.trackPlay}>
-      <PlayContent
-        currentAudio={props.currentAudio}
-        isLiked={props.isLiked}
-        setIsLiked={props.setIsLiked}
-        id={props.id}
-      />
+      <PlayContent currentAudio={props.currentAudio} id={props.id} />
     </div>
   );
 }
