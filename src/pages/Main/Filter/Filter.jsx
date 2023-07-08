@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "./FilterComponents/Button/Button";
 import Title from "./FilterComponents/Title/Title";
 import Authors from "./FilterComponents/Authors/Authors";
-import s from "./Filter.module.css";
+import s from "./Filter.module.scss";
 import Years from "./FilterComponents/Years/Years";
 import Genres from "./FilterComponents/Genres/Genres";
 import { useSelector } from "react-redux";

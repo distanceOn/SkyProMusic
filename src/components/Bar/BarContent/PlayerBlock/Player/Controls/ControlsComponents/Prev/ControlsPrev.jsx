@@ -1,4 +1,4 @@
-import s from "./ControlsPrev.module.css";
+import s from "./ControlsPrev.module.scss";
 
 export default function ControlsPrev(props) {
   return (

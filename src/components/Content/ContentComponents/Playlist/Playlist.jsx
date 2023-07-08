@@ -1,4 +1,4 @@
-import s from "./Playlist.module.css";
+import s from "./Playlist.module.scss";
 import {} from "../../../../redux/services/api";
 import { useDispatch, useSelector } from "react-redux";
 import {

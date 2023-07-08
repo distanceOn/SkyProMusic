@@ -1,4 +1,4 @@
-import s from "./IndiPLaylist.module.css";
+import s from "./IndiPLaylist.module.scss";
 import { usePlaylistsQuery } from "../../../../../redux/services/api";
 import { useEffect, useState } from "react";
 import SkeletonTrack from "../Track/SkeletonTrack/SkeletonTrack";

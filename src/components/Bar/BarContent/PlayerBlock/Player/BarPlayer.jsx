@@ -1,6 +1,6 @@
 import Controls from "./Controls/PlayerControls";
 import Play from "./Play/Play";
-import s from "./BarPlayer.module.css";
+import s from "./BarPlayer.module.scss";
 
 export default function BarPlayer(props) {
   return (

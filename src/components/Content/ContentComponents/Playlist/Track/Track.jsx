@@ -2,7 +2,7 @@ import Album from "./TrackComponents/Album/Album";
 import Author from "./TrackComponents/Author/Author";
 import Time from "./TrackComponents/Time/Time";
 import Title from "./TrackComponents/Title/Title";
-import s from "./Track.module.css";
+import s from "./Track.module.scss";
 import { useContext, useEffect, useState } from "react";
 import { useOneTrackQuery } from "../../../../../redux/services/api";
 import AudioContext from "../../../../../contexts/audioContext";

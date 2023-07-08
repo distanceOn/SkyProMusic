@@ -1,5 +1,5 @@
 import PlayContent from "./PlayContent/PlayContent";
-import s from "./Play.module.css";
+import s from "./Play.module.scss";
 
 export default function Play(props) {
   return (

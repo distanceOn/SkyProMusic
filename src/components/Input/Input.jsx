@@ -1,6 +1,6 @@
 import React, { createRef } from "react";
 import { useEffect, useState } from "react";
-import s from "./Input.module.css";
+import s from "./Input.module.scss";
 
 export const loginRef = createRef();
 

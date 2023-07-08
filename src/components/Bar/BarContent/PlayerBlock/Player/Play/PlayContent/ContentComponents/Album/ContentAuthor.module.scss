@@ -1,0 +1,15 @@
+.album {
+  min-width: 49px;
+  &__link {
+    color: #ffffff;
+
+    width: 35px;
+    height: 24px;
+
+    font-family: "StratosSkyeng";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 24px;
+  }
+}

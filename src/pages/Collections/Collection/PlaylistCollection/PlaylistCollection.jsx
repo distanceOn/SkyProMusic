@@ -1,4 +1,4 @@
-import s from "./PlaylistCollection.module.css";
+import s from "./PlaylistCollection.module.scss";
 import Nav from "../../../../components/Nav/Nav";
 import Content from "../../../../components/Content/Content";
 import Search from "../../../../components/Search/Search";

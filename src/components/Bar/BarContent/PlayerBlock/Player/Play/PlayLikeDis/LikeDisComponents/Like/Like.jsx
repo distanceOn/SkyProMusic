@@ -1,4 +1,4 @@
-import s from "./Like.module.css";
+import s from "./Like.module.scss";
 
 export default function Like(props) {
   return (

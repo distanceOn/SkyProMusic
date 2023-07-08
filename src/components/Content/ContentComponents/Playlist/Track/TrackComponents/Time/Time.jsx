@@ -2,7 +2,7 @@ import {
   useAddToFavoriteMutation,
   useRemoveFromFavoriteMutation,
 } from "../../../../../../../redux/services/api";
-import s from "./Time.module.css";
+import s from "./Time.module.scss";
 
 export default function Time(props) {
   const [addToFavorite] = useAddToFavoriteMutation();

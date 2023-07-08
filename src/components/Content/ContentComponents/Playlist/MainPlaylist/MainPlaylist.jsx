@@ -1,4 +1,4 @@
-import s from "./MainPLaylist.module.css";
+import s from "./MainPLaylist.module.scss";
 import { useTracksQuery } from "../../../../../redux/services/api";
 import { useEffect, useState } from "react";
 import SkeletonTrack from "../Track/SkeletonTrack/SkeletonTrack";

@@ -1,0 +1,14 @@
+.author {
+  width: 28.2%;
+  display: flex;
+  justify-content: flex-start;
+  &__link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    text-align: left;
+    cursor: default;
+  }
+}

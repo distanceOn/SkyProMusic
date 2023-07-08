@@ -1,0 +1,11 @@
+.trackPlay {
+  &__content {
+    width: 40vw;
+    display: flex;
+    align-items: center;
+  }
+  &__texts {
+    display: flex;
+    flex-direction: column;
+  }
+}

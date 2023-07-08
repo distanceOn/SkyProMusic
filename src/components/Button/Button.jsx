@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import s from "./Button.module.css";
+import s from "./Button.module.scss";
 
 export default function Button(props) {
   const button = (value) => {

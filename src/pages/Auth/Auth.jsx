@@ -1,5 +1,5 @@
 import Form from "./Form/Form";
-import s from "./Auth.module.css";
+import s from "./Auth.module.scss";
 import { useLocation } from "react-router-dom";
 
 export default function Auth() {

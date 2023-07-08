@@ -1,4 +1,4 @@
-import s from "./ContentTrack.module.css";
+import s from "./ContentTrack.module.scss";
 
 export default function ContentAuthor(props) {
   return (

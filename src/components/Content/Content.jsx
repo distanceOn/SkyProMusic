@@ -1,6 +1,6 @@
 import Playlist from "./ContentComponents/Playlist/Playlist";
 import Titles from "./ContentComponents/Titles/Titles";
-import s from "./Content.module.css";
+import s from "./Content.module.scss";
 
 export default function Content(props) {
   return (

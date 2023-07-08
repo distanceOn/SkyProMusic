@@ -1,4 +1,4 @@
-import s from './ControlsRepeat.module.css'
+import s from "./ControlsRepeat.module.scss";
 
 export default function ControlsRepeat() {
   return (
@@ -22,5 +22,5 @@ export default function ControlsRepeat() {
         />
       </svg>
     </div>
-  )
+  );
 }

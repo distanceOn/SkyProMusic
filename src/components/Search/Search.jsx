@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef } from "react";
-import s from "./Search.module.css";
+import s from "./Search.module.scss";
 import AudioContext from "../../contexts/audioContext";
 import { useLocation } from "react-router-dom";
 

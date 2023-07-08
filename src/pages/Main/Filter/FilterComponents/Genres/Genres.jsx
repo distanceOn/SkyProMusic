@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import s from "./Genres.module.css";
+import s from "./Genres.module.scss";
 import {
   getGenreState,
   getSelectionGenreState,

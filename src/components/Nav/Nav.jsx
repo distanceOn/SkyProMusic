@@ -1,4 +1,4 @@
-import s from "./Nav.module.css";
+import s from "./Nav.module.scss";
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import Logo from "../Imgs/Logo";
