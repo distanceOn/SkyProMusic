@@ -4,7 +4,7 @@ import {
 } from "../../../../../../../redux/services/api";
 import Dislike from "./LikeDisComponents/Dislike/Dislike";
 import Like from "./LikeDisComponents/Like/Like";
-import s from "./PlayLikeDis.module.css";
+import s from "./PlayLikeDis.module.scss";
 
 export default function PlayLikeDis(props) {
   const [addToFavorite] = useAddToFavoriteMutation();

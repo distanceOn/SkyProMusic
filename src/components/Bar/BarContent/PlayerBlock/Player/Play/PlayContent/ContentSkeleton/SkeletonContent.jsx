@@ -1,4 +1,4 @@
-import s from './SkeletonContent.module.css'
+import s from "./SkeletonContent.module.scss";
 
 export default function SkeletonContent() {
   return (
@@ -7,5 +7,5 @@ export default function SkeletonContent() {
       <div className={s.author} />
       <div className={s.album} />
     </div>
-  )
+  );
 }

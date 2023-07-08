@@ -1,4 +1,4 @@
-import s from "./SkeletonTrack.module.css";
+import s from "./SkeletonTrack.module.scss";
 
 export default function SkeletonTrack() {
   return (

@@ -1,0 +1,12 @@
+.prev {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 23px;
+  background-color: transparent;
+  border: none;
+  &__svg {
+    width: 15px;
+    height: 14px;
+  }
+}

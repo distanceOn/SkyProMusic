@@ -1,4 +1,4 @@
-import s from "./Title.module.css";
+import s from "./Title.module.scss";
 
 export default function Title(props) {
   if (props.postscript) {

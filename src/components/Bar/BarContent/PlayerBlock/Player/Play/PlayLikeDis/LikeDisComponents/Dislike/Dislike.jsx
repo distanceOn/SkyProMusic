@@ -1,4 +1,4 @@
-import s from "./Dislike.module.css";
+import s from "./Dislike.module.scss";
 
 export default function Dislike(props) {
   return (

@@ -1,4 +1,4 @@
-import s from "./Album.module.css";
+import s from "./Album.module.scss";
 
 export default function Author(props) {
   return (

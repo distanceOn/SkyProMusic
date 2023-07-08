@@ -1,4 +1,4 @@
-import s from "./Form.module.css";
+import s from "./Form.module.scss";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import {

@@ -1,5 +1,5 @@
 import Logout from "../Imgs/Logout";
-import s from "./Sidebar.module.css";
+import s from "./Sidebar.module.scss";
 import { NavLink } from "react-router-dom";
 import DayList1 from "../Imgs/playlist01.png";
 import DayList2 from "../Imgs/playlist02.png";

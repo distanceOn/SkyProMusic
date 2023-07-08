@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import BarPlayer from "./Player/BarPlayer";
 import Volume from "./Volume/Volume";
-import s from "./BarPlayerBlock.module.css";
+import s from "./BarPlayerBlock.module.scss";
 import AudioContext from "../../../../contexts/audioContext";
 import { getTracks, setActiveItem } from "../../../../redux/slices/tracksSlice";
 import { useDispatch, useSelector } from "react-redux";

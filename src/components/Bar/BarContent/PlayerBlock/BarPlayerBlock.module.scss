@@ -1,0 +1,17 @@
+.bar {
+  &__playerBlock {
+    height: 73px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+  &__playerProgress {
+    width: 100%;
+    height: 5px;
+    background: #2e2e2e;
+  }
+}

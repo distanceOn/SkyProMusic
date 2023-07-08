@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ContentAuthor from "./ContentComponents/Author/ContentTrack";
 import ContentTrack from "./ContentComponents/Author/ContentTrack";
 import ContentCover from "./ContentComponents/Cover/ContentCover";
-import s from "./PlayContent.module.css";
+import s from "./PlayContent.module.scss";
 import PlayLikeDis from "../PlayLikeDis/PlayLikeDis";
 
 export default function PlayContent(props) {

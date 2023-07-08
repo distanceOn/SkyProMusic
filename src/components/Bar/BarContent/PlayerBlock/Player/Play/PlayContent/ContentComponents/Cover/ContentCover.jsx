@@ -1,4 +1,4 @@
-import s from './ContentCover.module.css'
+import s from "./ContentCover.module.scss";
 
 export default function ContentCover() {
   return (
@@ -17,5 +17,5 @@ export default function ContentCover() {
         <ellipse cx="15.5" cy="13" rx="3.5" ry="2" stroke="#4E4E4E" />
       </svg>
     </div>
-  )
+  );
 }

@@ -4,7 +4,7 @@ import ControlsPlay from "./ControlsComponents/Play/ControlsPlay";
 import ControlsPrev from "./ControlsComponents/Prev/ControlsPrev";
 import ControlsRepeat from "./ControlsComponents/Repeat/ControlsRepeat";
 import ControlsShuffle from "./ControlsComponents/Shuffle/ControlsShuffle";
-import s from "./PlayerControls.module.css";
+import s from "./PlayerControls.module.scss";
 
 export default function Controls(props) {
   return (

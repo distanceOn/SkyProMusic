@@ -1,4 +1,4 @@
-import s from "./ControlsNext.module.css";
+import s from "./ControlsNext.module.scss";
 
 export default function ControlsNext(props) {
   return (

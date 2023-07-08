@@ -1,4 +1,4 @@
-import s from './ControlsShuffle.module.css'
+import s from "./ControlsShuffle.module.scss";
 
 export default function ControlsShuffle() {
   return (
@@ -22,5 +22,5 @@ export default function ControlsShuffle() {
         />
       </svg>
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import s from "./Authors.module.css";
+import s from "./Authors.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAuthorState,

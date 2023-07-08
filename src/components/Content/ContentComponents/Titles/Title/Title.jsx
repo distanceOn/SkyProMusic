@@ -1,8 +1,8 @@
-import s from './Title.module.css'
+import s from "./Title.module.scss";
 
 export default function Title(props) {
-  const defaultClass = s.title__col
-  if (props.name === '') {
+  const defaultClass = s.title__col;
+  if (props.name === "") {
     return (
       <div className={`${defaultClass} ${props.class}`}>
         <svg
@@ -17,7 +17,7 @@ export default function Title(props) {
           <path d="M4 6H6.5V2.5" stroke="#696969" />
         </svg>
       </div>
-    )
+    );
   }
-  return <div className={`${defaultClass} ${props.class}`}>{props.name}</div>
+  return <div className={`${defaultClass} ${props.class}`}>{props.name}</div>;
 }
