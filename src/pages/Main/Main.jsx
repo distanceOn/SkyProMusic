@@ -1,4 +1,4 @@
-import s from "./Main.module.css";
+import s from "./Main.module.scss";
 import Nav from "../../components/Nav/Nav";
 import Search from "../../components/Search/Search";
 import Header from "../../components/Header/Header";
@@ -23,9 +23,13 @@ import {
 import { useLocation } from "react-router-dom";
 
 export default function Main() {
-  const { data: allTracksData, refetch } = useTracksQuery();
   const dispatch = useDispatch();
+  const location = useLocation();
 
+  // запрос всех треков из бд
+  const { data: allTracksData, refetch } = useTracksQuery();
+
+  // повторный асинхронный запрос треков из бд
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,6 +43,7 @@ export default function Main() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refetch]);
 
+  // назначение в store tracksSlice треков
   useEffect(() => {
     if (allTracksData !== undefined) {
       dispatch(setTracks(allTracksData));
@@ -46,13 +51,14 @@ export default function Main() {
     }
   }, [allTracksData, dispatch]);
 
+  // значение треков из стейт
   const tracksData = useSelector(getTracks);
   const originalTracks = tracksData.payload.allTracks.tracks;
 
+  // локальный state фильтрованных треков
   const [filteredTracks, setFilteredTracks] = useState(null);
 
-  const location = useLocation();
-
+  // при переходе на другую страницу обнуляются фильтры
   useEffect(() => {
     dispatch(setGenreState(null));
     dispatch(setSelectionGenreState(null));
@@ -61,15 +67,19 @@ export default function Main() {
     dispatch(setYearsState(null));
   }, [location, dispatch]);
 
+  // значение жанра из стейт
   const genreFilter = useSelector(getGenreState);
   const genreData = genreFilter.payload.filter.genres.genre;
 
+  // значение автора из стейт
   const authorFilter = useSelector(getAuthorState);
   const authorData = authorFilter.payload.filter.authors.author;
 
+  // значение года из стейт
   const yearFilter = useSelector(getYearsState);
   const yearData = yearFilter.payload.filter.years.newer;
 
+  // фильтр
   useEffect(() => {
     let filteredData = originalTracks;
 
@@ -113,6 +123,7 @@ export default function Main() {
     setFilteredTracks(filteredData);
   }, [genreData, authorData, yearData, originalTracks]);
 
+  // какой контент с треками показывать в зависимости от фильтра
   const showContent = () => {
     const tracksToShow =
       genreData === null && authorData === null && yearData === null
@@ -126,7 +137,7 @@ export default function Main() {
       <div className={s.container}>
         <div className={s.main}>
           <Nav />
-          <div className={s.centerblock}>
+          <div className={s.main__centerblock}>
             <Search />
             <Header value="Треки" />
             <Filter />
