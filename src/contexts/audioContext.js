@@ -37,6 +37,7 @@ export const AudioProvider = ({ children }) => {
     <AudioContext.Provider
       value={{
         audio,
+        setAudio,
         handleSetNewAudio,
         audioParams,
         searchName,
