@@ -1,28 +1,34 @@
+import { useContext } from "react";
 import {
   useAddToFavoriteMutation,
   useRemoveFromFavoriteMutation,
 } from "../../../../../../../redux/services/api";
 import s from "./Time.module.scss";
+import AudioContext from "../../../../../../../contexts/audioContext";
 
 export default function Time(props) {
   const [addToFavorite] = useAddToFavoriteMutation();
   const [removeFromFavorite] = useRemoveFromFavoriteMutation();
+  const { isLiked: barIsLiked, setIsLiked: setBarIsLiked } =
+    useContext(AudioContext);
 
   const handleLike = () => {
-    if (props.isLiked === false) {
+    if (props.isLiked === false && barIsLiked === false) {
       addToFavorite(props.id)
         .then((response) => {
           console.log(response);
-          props.setIsLiked(!props.isLiked);
+          props.setIsLiked(true);
+          setBarIsLiked(true);
         })
         .catch((error) => {
           console.log("Error adding to favourite:", error);
         });
-    } else if (props.isLiked === true) {
+    } else if (props.isLiked === true && barIsLiked === true) {
       removeFromFavorite(props.id)
         .then((response) => {
           console.log(response);
-          props.setIsLiked(!props.isLiked);
+          props.setIsLiked(false);
+          setBarIsLiked(false);
         })
         .catch((error) => {
           console.log("Error removing to favourite:", error);
