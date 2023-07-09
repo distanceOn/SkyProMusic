@@ -1,6 +1,6 @@
-import Picture from './VolumeComponents/Picture/Picture'
-import Progress from './VolumeComponents/Progress/Progress'
-import s from './Volume.module.css'
+import Picture from "./VolumeComponents/Picture/Picture";
+import Progress from "./VolumeComponents/Progress/Progress";
+import s from "./Volume.module.scss";
 
 export default function Volume() {
   return (
@@ -10,5 +10,5 @@ export default function Volume() {
         <Progress />
       </div>
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import s from "./Authors.module.css";
+import s from "./Authors.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAuthorState,
@@ -25,10 +25,6 @@ export default function Authors(props) {
   useEffect(() => {
     setAuthorData(authorSelectionData.payload.filter.authors.author);
   }, [authorSelectionData]);
-
-  useEffect(() => {
-    console.log(authorData);
-  }, [authorData]);
 
   const showList = () => {
     if (props.authors !== undefined) {

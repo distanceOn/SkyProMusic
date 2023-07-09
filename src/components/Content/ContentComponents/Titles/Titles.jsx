@@ -1,5 +1,5 @@
 import Title from "./Title/Title";
-import s from "./Titles.module.css";
+import s from "./Titles.module.scss";
 
 export default function Titles() {
   return (

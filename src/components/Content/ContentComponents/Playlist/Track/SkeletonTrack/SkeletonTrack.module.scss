@@ -1,0 +1,54 @@
+.title {
+  width: 5.99%;
+  &__pat {
+    text-align: left;
+    width: 51px;
+    height: 51px;
+
+    background: #313131;
+  }
+}
+.author {
+  width: 36.35%;
+  height: 19px;
+  &__pat {
+    width: 80%;
+    height: 19px;
+
+    background: #313131;
+  }
+}
+
+.album {
+  width: 28.25%;
+  height: 19px;
+  &__pat {
+    width: 80%;
+    height: 19px;
+
+    background: #313131;
+  }
+}
+.time {
+  width: 305px;
+  height: 19px;
+
+  background: #313131;
+  &__pat {
+    width: 305px;
+    height: 19px;
+
+    background: #313131;
+  }
+}
+.item {
+  width: 1136px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

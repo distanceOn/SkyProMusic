@@ -1,4 +1,4 @@
-import s from "./ContentAuthor.module.css";
+import s from "./ContentAuthor.module.scss";
 
 export default function ContentAlbum(props) {
   return (

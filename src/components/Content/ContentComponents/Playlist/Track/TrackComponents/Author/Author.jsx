@@ -1,4 +1,4 @@
-import s from "./Author.module.css";
+import s from "./Author.module.scss";
 
 export default function Author(props) {
   return (

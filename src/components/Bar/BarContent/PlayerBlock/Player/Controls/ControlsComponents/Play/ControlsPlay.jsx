@@ -1,4 +1,4 @@
-import s from './ControlsPlay.module.css'
+import s from "./ControlsPlay.module.scss";
 
 export default function ControlsPlay(props) {
   return (
@@ -18,5 +18,5 @@ export default function ControlsPlay(props) {
         />
       </svg>
     </button>
-  )
+  );
 }

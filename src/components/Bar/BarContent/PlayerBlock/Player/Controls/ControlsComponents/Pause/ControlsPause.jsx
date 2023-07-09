@@ -1,4 +1,4 @@
-import s from './ControlsPause.module.css'
+import s from "./ControlsPause.module.scss";
 
 export default function ControlsPause(props) {
   return (
@@ -15,5 +15,5 @@ export default function ControlsPause(props) {
         <rect x="10" width="5" height="19" fill="#D9D9D9" />
       </svg>
     </button>
-  )
+  );
 }

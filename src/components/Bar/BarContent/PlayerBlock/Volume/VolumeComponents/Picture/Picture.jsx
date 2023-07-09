@@ -1,4 +1,4 @@
-import s from './Picture.module.css'
+import s from "./Picture.module.scss";
 
 export default function Picture() {
   return (
@@ -30,5 +30,5 @@ export default function Picture() {
         />
       </svg>
     </div>
-  )
+  );
 }

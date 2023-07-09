@@ -1,4 +1,4 @@
-import s from "./Main.module.css";
+import s from "./Main.module.scss";
 import Nav from "../../components/Nav/Nav";
 import Search from "../../components/Search/Search";
 import Header from "../../components/Header/Header";
@@ -23,14 +23,15 @@ import {
 import { useLocation } from "react-router-dom";
 
 export default function Main() {
-  const { data: allTracksData, refetch } = useTracksQuery();
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  const { data: allTracksData, refetch } = useTracksQuery();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await refetch();
-        console.log(allTracksData);
       } catch (error) {
         console.log(error);
       }
@@ -42,7 +43,6 @@ export default function Main() {
   useEffect(() => {
     if (allTracksData !== undefined) {
       dispatch(setTracks(allTracksData));
-      console.log(allTracksData);
     }
   }, [allTracksData, dispatch]);
 
@@ -50,8 +50,6 @@ export default function Main() {
   const originalTracks = tracksData.payload.allTracks.tracks;
 
   const [filteredTracks, setFilteredTracks] = useState(null);
-
-  const location = useLocation();
 
   useEffect(() => {
     dispatch(setGenreState(null));
@@ -126,7 +124,7 @@ export default function Main() {
       <div className={s.container}>
         <div className={s.main}>
           <Nav />
-          <div className={s.centerblock}>
+          <div className={s.main__centerblock}>
             <Search />
             <Header value="Треки" />
             <Filter />

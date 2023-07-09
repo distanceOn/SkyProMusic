@@ -1,4 +1,4 @@
-import s from "./Form.module.css";
+import s from "./Form.module.scss";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import {
@@ -7,8 +7,7 @@ import {
   useTokenMutation,
 } from "../../../redux/services/api";
 import { enter, registration } from "../../../redux/events/authEvents";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../../redux/slices/authSlice";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../components/Imgs/Logo";
@@ -23,11 +22,9 @@ export default function Form(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
-  const user = useSelector(getUser);
 
   useEffect(() => {
     if (localStorage.getItem("refresh")) {
-      console.log(user.payload.auth);
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

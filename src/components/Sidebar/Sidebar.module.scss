@@ -1,0 +1,38 @@
+.sidebar {
+  max-width: 418px;
+  padding: 36px 91px 0px 0px;
+  &__block {
+    height: 100%;
+    padding: 240px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+}
+.logout {
+  margin-left: 210px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.item {
+  width: 250px;
+  height: 150px;
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}

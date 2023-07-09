@@ -1,4 +1,4 @@
-import s from "./Years.module.css";
+import s from "./Years.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getYearsState,
@@ -14,7 +14,6 @@ export default function Years() {
 
   useEffect(() => {
     setDate(dateSelectionData.payload.filter.years.newer);
-    console.log(dateSelectionData.payload.filter.years.newer);
   }, [dateSelectionData]);
 
   const setNew = () => {

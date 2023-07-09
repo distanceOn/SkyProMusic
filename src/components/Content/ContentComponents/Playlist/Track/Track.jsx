@@ -2,7 +2,7 @@ import Album from "./TrackComponents/Album/Album";
 import Author from "./TrackComponents/Author/Author";
 import Time from "./TrackComponents/Time/Time";
 import Title from "./TrackComponents/Title/Title";
-import s from "./Track.module.css";
+import s from "./Track.module.scss";
 import { useContext, useEffect, useState } from "react";
 import { useOneTrackQuery } from "../../../../../redux/services/api";
 import AudioContext from "../../../../../contexts/audioContext";
@@ -24,11 +24,10 @@ export default function Track(props) {
         console.log(error);
       }
     };
+
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refetch]);
-
-  const [isLiked, setIsLiked] = useState(false);
 
   const [track, setTrack] = useState(null);
 
@@ -39,11 +38,6 @@ export default function Track(props) {
   useEffect(() => {
     if (trackData !== undefined) {
       setTrack(trackData);
-      setIsLiked(
-        trackData.stared_user.some(
-          (element) => element.id === parseInt(localStorage.getItem("id"))
-        )
-      );
 
       if (track !== null) {
         setTrack(track);
@@ -54,25 +48,18 @@ export default function Track(props) {
 
   const [showFirst, setShowFirst] = useState(true);
 
+  const searchNameLower = searchName !== null ? searchName.toLowerCase() : null;
+
   return showFirst ? (
     <SkeletonTrack />
   ) : (
     <div
       style={{
-        display: (() => {
-          if (searchName !== null) {
-            const display = searchName.split("");
-            const name = props.nameTitle.split("");
-            for (let i = 0; i < display.length; i++) {
-              if (display[i] !== name[i]) {
-                return "none";
-              }
-            }
-            return "block";
-          } else {
-            return "block";
-          }
-        })(),
+        display:
+          searchNameLower !== null &&
+          !props.nameTitle.toLowerCase().startsWith(searchNameLower)
+            ? "none"
+            : "block",
       }}
     >
       <div
@@ -92,12 +79,7 @@ export default function Track(props) {
           />
           <Author href={props.hrefAuthor} name={props.nameAuthor} />
           <Album href={props.hrefAlbum} name={props.nameAlbum} />
-          <Time
-            time={props.time}
-            id={props.id}
-            isLiked={isLiked}
-            setIsLiked={setIsLiked}
-          />
+          <Time time={props.time} id={props.id} trackData={trackData} />
         </div>
       </div>
     </div>

@@ -1,0 +1,72 @@
+.container {
+  margin-top: 20px;
+  position: absolute;
+  width: 248px;
+  height: 305px;
+  background: #313131;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+li button {
+  background-color: transparent;
+  border: none;
+}
+.authors {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  width: 180px;
+  height: 237px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 65px;
+    background-color: #4b4949;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  &::-moz-scrollbar {
+    width: 4px;
+    height: 65px;
+    background-color: #4b4949;
+  }
+  &::-moz-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  &::-ms-scrollbar {
+    width: 4px;
+    height: 65px;
+    background-color: #4b4949;
+  }
+  &::-ms-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+}
+.author {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+
+  color: #ffffff;
+}
+.active {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  cursor: pointer;
+
+  color: #b672ff;
+}

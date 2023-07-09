@@ -1,105 +1,85 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import BarPlayer from "./Player/BarPlayer";
 import Volume from "./Volume/Volume";
-import s from "./BarPlayerBlock.module.css";
+import s from "./BarPlayerBlock.module.scss";
 import AudioContext from "../../../../contexts/audioContext";
 import { getTracks, setActiveItem } from "../../../../redux/slices/tracksSlice";
 import { useDispatch, useSelector } from "react-redux";
 import TemplateAudio from "./audio/BobbyMarleniDropping.mp3";
 
 export default function BarPlayerBlock() {
-  const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-
   const dispatch = useDispatch();
+  const audioRef = useRef(null);
 
-  const { audio } = useContext(AudioContext);
-
-  const [currentAudio, setCurrentAudio] = useState(null);
+  const { audio, setAudio, audioParams, setAudioParams } =
+    useContext(AudioContext);
 
   const allTracksData = useSelector(getTracks);
   const allTracks = allTracksData.payload.allTracks.tracks;
 
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
   const [playedTracks, setPlayedTracks] = useState([]);
 
-  const [isLiked, setIsLiked] = useState(false);
-
-  useEffect(() => {
-    if (currentAudio !== null) {
-      setIsLiked(
-        currentAudio.stared_user.some(
-          (element) => element.id === parseInt(localStorage.getItem("id"))
-        )
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentAudio]);
-
-  useEffect(() => {
-    if (audio !== null) {
-      setCurrentAudio(audio);
-      setPlayedTracks((prevTracks) => [...prevTracks, audio]);
-      console.log("played tracks", playedTracks);
-      handlePlay();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [audio]);
-
   const handlePlay = () => {
-    audioRef.current.play().catch((error) => {
-      if (error.name === "NotAllowedError") {
-        console.log("Audio playback was prevented by the browser.");
-      } else {
-        console.log("Error playing audio:", error.message);
-      }
-    });
-    setIsPlaying(true);
-  };
-
-  const handlePause = () => {
-    audioRef.current.pause();
-    setIsPlaying(false);
-  };
-
-  const handleTimeUpdate = () => {
-    setCurrentTime(audioRef.current.currentTime);
-  };
-
-  const handleSeek = (event) => {
-    audioRef.current.currentTime = event.target.value;
-    setCurrentTime(audioRef.current.currentTime);
+    if (audioRef.current) {
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((error) => {
+          console.log("Error playing audio:", error);
+        });
+    }
   };
 
   const handleCanPlayThrough = () => {
-    if (isPlaying) {
+    if (isPlaying && audioParams.play === true) {
       handlePlay();
+    }
+  };
+
+  const handlePause = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      const newTime = audioRef.current.currentTime;
+      setCurrentTime(newTime);
+      localStorage.setItem("currentTrackTime", newTime.toString());
+    }
+  };
+
+  const handleSeek = (event) => {
+    const time = parseFloat(event.target.value);
+    if (audioRef.current) {
+      audioRef.current.currentTime = time;
+      setCurrentTime(time);
+      localStorage.setItem("currentTrackTime", time.toString());
     }
   };
 
   const handlePrevTrack = () => {
     if (playedTracks.length > 0) {
-      // Создаем копию массива playedTracks
       const updatedTracks = [...playedTracks];
-
       if (updatedTracks.length > 1) {
-        // Удаляем последний элемент из копии массива playedTracks
         updatedTracks.pop();
-        setCurrentAudio(updatedTracks[updatedTracks.length - 1]);
+        setAudio(updatedTracks[updatedTracks.length - 1]);
         dispatch(setActiveItem(updatedTracks[updatedTracks.length - 1].id));
       }
-
-      // Обновляем состояние playedTracks
       setPlayedTracks(updatedTracks);
       handlePlay();
     }
   };
 
-  // ...
-
   const handleNextTrack = () => {
-    if (currentAudio !== null) {
-      const id = currentAudio.id + 1;
+    if (audio !== null) {
+      const id = audio.id + 1;
       let nextTrack = null;
 
       for (let i = 0; i < allTracks.length; i++) {
@@ -116,16 +96,37 @@ export default function BarPlayerBlock() {
         nextTrack !== null &&
         nextTrack !== playedTracks[playedTracks.length - 1]
       ) {
-        setCurrentAudio(nextTrack);
+        setAudio(nextTrack);
         dispatch(setActiveItem(nextTrack.id));
         setPlayedTracks((prevTracks) => [...prevTracks, nextTrack]);
-        console.log(playedTracks);
         handlePlay();
       }
     }
   };
 
-  // ...
+  useEffect(() => {
+    if (audio !== null && audioParams.play === true) {
+      setAudio(audio);
+      setPlayedTracks((prevTracks) => [...prevTracks, audio]);
+      handlePlay();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [audio, audioParams.play]);
+
+  useEffect(() => {
+    const savedTime = localStorage.getItem("currentTrackTime");
+    const savedPausedState = localStorage.getItem("trackPausedState");
+
+    if (savedTime && audioRef.current) {
+      audioRef.current.currentTime = parseFloat(savedTime);
+      setCurrentTime(parseFloat(savedTime));
+    }
+
+    if (savedPausedState && audioParams.pause === true) {
+      setAudioParams({ play: false, pause: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={s.bar__content}>
@@ -140,13 +141,13 @@ export default function BarPlayerBlock() {
       <div className={s.bar__playerBlock}>
         <audio
           ref={audioRef}
-          src={currentAudio ? currentAudio.track_file : TemplateAudio}
+          src={audio ? audio.track_file : TemplateAudio}
           onTimeUpdate={handleTimeUpdate}
           onCanPlayThrough={handleCanPlayThrough}
           onEnded={handleNextTrack}
         >
           <source
-            src={currentAudio ? currentAudio.track_file : TemplateAudio}
+            src={audio ? audio.track_file : TemplateAudio}
             type="audio/mpeg"
           />
           <track kind="captions" />
@@ -157,10 +158,8 @@ export default function BarPlayerBlock() {
           handlePlay={handlePlay}
           handlePause={handlePause}
           isPlaying={isPlaying}
-          currentAudio={currentAudio}
-          isLiked={isLiked}
-          setIsLiked={setIsLiked}
-          id={currentAudio !== null ? currentAudio.id : undefined}
+          currentAudio={audio}
+          id={audio !== null ? audio.id : undefined}
         />
         <Volume />
       </div>

@@ -1,4 +1,4 @@
-import s from "./MyCollection.module.css";
+import s from "./MyCollection.module.scss";
 import Nav from "../../../../components/Nav/Nav";
 import Content from "../../../../components/Content/Content";
 import Search from "../../../../components/Search/Search";
@@ -22,7 +22,6 @@ export default function MyCollection(props) {
     const fetchData = async () => {
       try {
         await refetch();
-        console.log(favoriteData);
       } catch (error) {
         console.log(error);
       }

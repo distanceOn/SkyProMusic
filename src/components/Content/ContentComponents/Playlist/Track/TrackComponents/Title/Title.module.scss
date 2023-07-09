@@ -1,0 +1,36 @@
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 42.3%;
+  &__link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    cursor: default;
+  }
+  &__span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #4e4e4e;
+  }
+}
+.image {
+  width: 51px;
+  height: 51px;
+  background: #313131;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 17px;
+}
+.svg {
+  width: 18px;
+  height: 17px;
+  fill: transparent;
+  stroke: #4e4e4e;
+}

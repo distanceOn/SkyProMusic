@@ -1,4 +1,4 @@
-import s from "./DancePLaylist.module.css";
+import s from "./DancePLaylist.module.scss";
 import { usePlaylistsQuery } from "../../../../../redux/services/api";
 import { useEffect, useState } from "react";
 import SkeletonTrack from "../Track/SkeletonTrack/SkeletonTrack";
@@ -29,7 +29,6 @@ export default function DancePlaylist() {
       const getAllTracks = async () => {
         try {
           dispatch(setTracks(data.items));
-          console.log(data);
         } catch (error) {
           console.log(error);
         }

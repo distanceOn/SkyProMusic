@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import s from "./Genres.module.css";
+import s from "./Genres.module.scss";
 import {
   getGenreState,
   getSelectionGenreState,
@@ -25,10 +25,6 @@ export default function Genres(props) {
   useEffect(() => {
     setGenreData(genreSelectionData.payload.filter.genres.genre);
   }, [genreSelectionData]);
-
-  useEffect(() => {
-    console.log(genreData);
-  }, [genreData]);
 
   const showList = () => {
     if (props.genres !== undefined) {
