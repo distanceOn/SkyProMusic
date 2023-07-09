@@ -18,14 +18,6 @@ export const AudioProvider = ({ children }) => {
     }
   }, [audio]);
 
-  useEffect(() => {
-    console.log("audio ", audio);
-  }, [audio]);
-
-  useEffect(() => {
-    console.log("Params ", audioParams);
-  }, [audioParams]);
-
   const handleSetNewAudio = (track) => {
     if (audio === null) {
       setAudio(track);

@@ -32,7 +32,6 @@ export default function Main() {
     const fetchData = async () => {
       try {
         await refetch();
-        console.log(allTracksData);
       } catch (error) {
         console.log(error);
       }
@@ -44,7 +43,6 @@ export default function Main() {
   useEffect(() => {
     if (allTracksData !== undefined) {
       dispatch(setTracks(allTracksData));
-      console.log(allTracksData);
     }
   }, [allTracksData, dispatch]);
 

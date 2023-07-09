@@ -28,7 +28,7 @@ export default function MainPlaylist() {
     if (data !== undefined) {
       const getAllTracks = async () => {
         try {
-          dispatch(setTracks(data));
+          dispatch(setTracks(data.items));
         } catch (error) {
           console.log(error);
         }

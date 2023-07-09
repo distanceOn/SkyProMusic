@@ -21,7 +21,6 @@ export default function Filter() {
   }, [allTracks]);
 
   const [authors, setAuthors] = useState();
-  const [years, setYears] = useState();
   const [genres, setGenres] = useState();
 
   useEffect(() => {
@@ -40,21 +39,6 @@ export default function Filter() {
     }
 
     if (tracks.length !== 0) {
-      setYears(() => {
-        const uniqueYears = tracks.reduce((unique, track, index) => {
-          const year = track.release_date?.substring(0, 4);
-          if (index === 0) {
-            unique.push(year);
-          } else if (!unique.includes(year)) {
-            unique.push(year);
-          }
-          return unique;
-        }, []);
-        return uniqueYears;
-      });
-    }
-
-    if (tracks.length !== 0) {
       setGenres(() => {
         const uniqueGenres = tracks.reduce((unique, track, index) => {
           if (index === 0) {
@@ -68,16 +52,6 @@ export default function Filter() {
       });
     }
   }, [tracks]);
-
-  useEffect(() => {
-    console.log(authors);
-  }, [authors]);
-  useEffect(() => {
-    console.log(years);
-  }, [years]);
-  useEffect(() => {
-    console.log(genres);
-  }, [genres]);
 
   const toggleFilterAuthorsClick = () => {
     setIsFilterAuthorsOpen(!isFilterAuthorsOpen);

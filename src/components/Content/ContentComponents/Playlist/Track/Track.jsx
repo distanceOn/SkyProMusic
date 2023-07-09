@@ -24,6 +24,7 @@ export default function Track(props) {
         console.log(error);
       }
     };
+
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refetch]);

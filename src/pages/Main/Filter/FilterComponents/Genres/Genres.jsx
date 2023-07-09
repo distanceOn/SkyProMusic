@@ -26,10 +26,6 @@ export default function Genres(props) {
     setGenreData(genreSelectionData.payload.filter.genres.genre);
   }, [genreSelectionData]);
 
-  useEffect(() => {
-    console.log(genreData);
-  }, [genreData]);
-
   const showList = () => {
     if (props.genres !== undefined) {
       return props.genres.map((genre, index) => {

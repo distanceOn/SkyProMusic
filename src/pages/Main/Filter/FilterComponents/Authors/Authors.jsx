@@ -26,10 +26,6 @@ export default function Authors(props) {
     setAuthorData(authorSelectionData.payload.filter.authors.author);
   }, [authorSelectionData]);
 
-  useEffect(() => {
-    console.log(authorData);
-  }, [authorData]);
-
   const showList = () => {
     if (props.authors !== undefined) {
       return props.authors.map((author, index) => {

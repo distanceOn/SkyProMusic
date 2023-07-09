@@ -29,7 +29,6 @@ export default function DancePlaylist() {
       const getAllTracks = async () => {
         try {
           dispatch(setTracks(data.items));
-          console.log(data);
         } catch (error) {
           console.log(error);
         }

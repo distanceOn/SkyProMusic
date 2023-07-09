@@ -22,7 +22,6 @@ export default function MyCollection(props) {
     const fetchData = async () => {
       try {
         await refetch();
-        console.log(favoriteData);
       } catch (error) {
         console.log(error);
       }
