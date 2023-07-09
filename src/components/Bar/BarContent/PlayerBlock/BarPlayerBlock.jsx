@@ -11,13 +11,12 @@ export default function BarPlayerBlock() {
   const dispatch = useDispatch();
   const audioRef = useRef(null);
 
-  const { audio, setAudio, audioParams, setAudioParams } =
+  const { audio, setAudio, audioParams, isPlaying, setIsPlaying } =
     useContext(AudioContext);
 
   const allTracksData = useSelector(getTracks);
   const allTracks = allTracksData.payload.allTracks.tracks;
 
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [playedTracks, setPlayedTracks] = useState([]);
 
@@ -33,6 +32,15 @@ export default function BarPlayerBlock() {
         });
     }
   };
+
+  useEffect(() => {
+    if (isPlaying) {
+      handlePlay();
+    } else if (!isPlaying) {
+      handlePause();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPlaying]);
 
   const handleCanPlayThrough = () => {
     if (isPlaying && audioParams.play === true) {
@@ -115,15 +123,16 @@ export default function BarPlayerBlock() {
 
   useEffect(() => {
     const savedTime = localStorage.getItem("currentTrackTime");
-    const savedPausedState = localStorage.getItem("trackPausedState");
 
     if (savedTime && audioRef.current) {
       audioRef.current.currentTime = parseFloat(savedTime);
       setCurrentTime(parseFloat(savedTime));
     }
 
-    if (savedPausedState && audioParams.pause === true) {
-      setAudioParams({ play: false, pause: true });
+    if (isPlaying === false) {
+      handlePause();
+    } else if (isPlaying === true) {
+      handlePlay();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

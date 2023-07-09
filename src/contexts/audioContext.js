@@ -7,6 +7,7 @@ export const AudioProvider = ({ children }) => {
   const [audioParams, setAudioParams] = useState({ play: false, pause: true });
   const [searchName, setSearchName] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (audio && audio.stared_user) {
@@ -23,14 +24,17 @@ export const AudioProvider = ({ children }) => {
       setAudio(track);
       setAudioParams({ play: true, pause: false });
     } else if (audio === track) {
-      if (audioParams.play && !audioParams.pause) {
+      if (isPlaying === true) {
         setAudioParams({ play: false, pause: true });
-      } else if (!audioParams.play && audioParams.pause) {
+        setIsPlaying(false);
+      } else if (isPlaying === false) {
         setAudioParams({ play: true, pause: false });
+        setIsPlaying(true);
       }
     } else {
       setAudio(track);
       setAudioParams({ play: true, pause: false });
+      setIsPlaying(true);
     }
   };
 
@@ -42,6 +46,8 @@ export const AudioProvider = ({ children }) => {
         handleSetNewAudio,
         audioParams,
         setAudioParams,
+        isPlaying,
+        setIsPlaying,
         searchName,
         setSearchName,
         isLiked,

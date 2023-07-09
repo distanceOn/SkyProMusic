@@ -34,10 +34,11 @@ export default function Sidebar(props) {
       ""
     );
   };
-  const { setAudioParams, setAudio } = useContext(AudioContext);
+  const { setAudioParams, setAudio, setIsPlaying } = useContext(AudioContext);
 
   const handleLogout = () => {
     setAudioParams({ play: false, pause: true });
+    setIsPlaying(false);
     setAudio(null);
     localStorage.clear();
   };
