@@ -14,7 +14,6 @@ export default function Years() {
 
   useEffect(() => {
     setDate(dateSelectionData.payload.filter.years.newer);
-    console.log(dateSelectionData.payload.filter.years.newer);
   }, [dateSelectionData]);
 
   const setNew = () => {

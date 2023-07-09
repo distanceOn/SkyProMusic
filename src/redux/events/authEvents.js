@@ -8,7 +8,6 @@ const getToken = async (userToken, dispatch, logData, responseData) => {
     dispatch(setUser({ ...responseData, token: tokenData.data }));
     localStorage.setItem("refresh", tokenData.data.refresh);
     localStorage.setItem("access", tokenData.data.access);
-    console.log(localStorage);
   } catch (error) {
     console.log(error);
   }
@@ -30,7 +29,6 @@ export const enter = async (userLogin, dispatch, userToken) => {
 
       localStorage.setItem("user", JSON.stringify(responseData));
       localStorage.setItem("id", JSON.stringify(responseData.id));
-      console.log(localStorage.getItem("user"));
 
       await getToken(userToken, dispatch, logData, responseData);
     } catch (error) {
@@ -58,7 +56,6 @@ export const registration = async (userSignup, dispatch, userToken) => {
       const responseData = response.data;
 
       localStorage.setItem("user", JSON.stringify(responseData));
-      console.log(localStorage.getItem("user"));
 
       await getToken(userToken, dispatch, logData, responseData);
     } catch (error) {

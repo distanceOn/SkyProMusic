@@ -24,7 +24,6 @@ export default function PlaylistCollection(props) {
     const fetchData = async () => {
       try {
         await refetch();
-        console.log(playlistData);
       } catch (error) {
         console.log(error);
       }

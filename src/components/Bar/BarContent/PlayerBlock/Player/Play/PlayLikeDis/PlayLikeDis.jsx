@@ -16,8 +16,7 @@ export default function PlayLikeDis(props) {
   const handleLike = async () => {
     if (isLiked === false) {
       try {
-        const response = await addToFavorite(props.id);
-        console.log(response);
+        await addToFavorite(props.id);
         setIsLiked(true);
       } catch (error) {
         console.log("Error adding to favourite:", error);
@@ -28,8 +27,7 @@ export default function PlayLikeDis(props) {
   const handleDis = async () => {
     if (isLiked === true) {
       try {
-        const response = await removeFromFavorite(props.id);
-        console.log(response);
+        await removeFromFavorite(props.id);
         setIsLiked(false);
       } catch (error) {
         console.log("Error removing from favourite:", error);

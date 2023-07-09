@@ -17,7 +17,6 @@ export default function AppRoutes() {
     try {
       const accessToken = await userRefreshToken({ refresh: refresh });
       localStorage.setItem("access", accessToken.data.access);
-      console.log(localStorage);
     } catch (error) {
       console.log(error);
     }

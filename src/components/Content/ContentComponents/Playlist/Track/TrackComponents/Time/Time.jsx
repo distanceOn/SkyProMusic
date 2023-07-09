@@ -37,7 +37,6 @@ export default function Time(props) {
     if (like === false && barIsLiked === false) {
       addToFavorite(props.id)
         .then((response) => {
-          console.log(response);
           setLike(true);
           setBarIsLiked(true);
         })
@@ -47,7 +46,6 @@ export default function Time(props) {
     } else if (like === true && barIsLiked === true) {
       removeFromFavorite(props.id)
         .then((response) => {
-          console.log(response);
           setLike(false);
           setBarIsLiked(false);
         })
