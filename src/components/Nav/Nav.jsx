@@ -6,7 +6,7 @@ import AudioContext from "../../contexts/audioContext";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setAudioParams, setAudio } = useContext(AudioContext);
+  const { setAudioParams, setAudio, setIsPlaying } = useContext(AudioContext);
 
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,6 +14,7 @@ export default function Nav() {
 
   const handleLogoutClick = () => {
     setAudioParams({ play: false, pause: true });
+    setIsPlaying(false);
     setAudio(null);
 
     localStorage.clear();
