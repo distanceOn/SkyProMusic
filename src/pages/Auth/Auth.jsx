@@ -1,4 +1,4 @@
-import Form from "./Form/Form";
+import Form from "./AuthForm/AuthForm";
 import s from "./Auth.module.scss";
 import { useLocation } from "react-router-dom";
 

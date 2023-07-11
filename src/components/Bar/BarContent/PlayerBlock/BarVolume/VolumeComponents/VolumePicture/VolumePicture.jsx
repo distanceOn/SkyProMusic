@@ -1,4 +1,4 @@
-import s from "./Picture.module.scss";
+import s from "./VolumePicture.module.scss";
 
 export default function Picture() {
   return (

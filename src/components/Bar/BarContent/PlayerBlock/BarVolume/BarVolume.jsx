@@ -1,6 +1,6 @@
-import Picture from "./VolumeComponents/Picture/Picture";
-import Progress from "./VolumeComponents/Progress/Progress";
-import s from "./Volume.module.scss";
+import Picture from "./VolumeComponents/VolumePicture/VolumePicture";
+import Progress from "./VolumeComponents/VolumeProgress/VolumeProgress";
+import s from "./BarVolume.module.scss";
 
 export default function Volume() {
   return (

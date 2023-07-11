@@ -1,4 +1,4 @@
-import s from "./Title.module.scss";
+import s from "./ContentTitle.module.scss";
 
 export default function Title(props) {
   const defaultClass = s.title__col;
