@@ -1,27 +1,27 @@
 .search {
-  width: 60vw;
-  border-bottom: 1px solid #4e4e4e;
-  margin-bottom: 51px;
+  width: 54vw;
+  border-bottom: 0.0694vw solid #4e4e4e;
+  margin-bottom: 3.541vw;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 .svg {
-  width: 17px;
-  height: 17px;
-  margin-right: 5px;
+  width: 1.18vw;
+  height: 1.18vw;
+  margin-right: 0.347vw;
   stroke: #ffffff;
   fill: transparent;
 }
 .text {
-  flex-grow: 100;
+  width: 100%;
   background-color: transparent;
   border: none;
-  padding: 13px 10px 14px;
+  padding: 0.903vw 0.694vw 0.972vw;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.111vw;
+  line-height: 1.666vw;
   color: #ffffff;
   outline: none;
   &::-moz-placeholder {
@@ -29,15 +29,15 @@
     color: #ffffff;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1.111vw;
+    line-height: 1.666vw;
   }
   &::placeholder {
     background-color: transparent;
     color: #ffffff;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1.111vw;
+    line-height: 1.666vw;
   }
 }

@@ -1,19 +1,19 @@
 .like {
-  width: 14px;
-  height: 12px;
+  width: 0.972vw;
+  height: 0.833vw;
   stroke: #696969;
   cursor: pointer;
 }
 .time {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.111vw;
+  line-height: 1.666vw;
   text-align: right;
   color: #696969;
   &__block {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 1.111vw;
   }
 }

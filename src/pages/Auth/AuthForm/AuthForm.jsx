@@ -1,4 +1,4 @@
-import s from "./Form.module.scss";
+import s from "./AuthForm.module.scss";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import {
@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../components/Imgs/Logo";
 
-export default function Form(props) {
+export default function AuthForm(props) {
   const [userLogin] = useLoginMutation();
   const [userSignup] = useSignupMutation();
   const [userToken] = useTokenMutation();

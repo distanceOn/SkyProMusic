@@ -1,13 +1,13 @@
 .register_start {
-  width: 278px;
-  height: 52px;
-  border: 1px solid #d0cece;
-  border-radius: 6px;
+  width: 19.305vw;
+  height: 3.611vw;
+  border: 0.0694vw solid #d0cece;
+  border-radius: 0.416vw;
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.25vw;
+  line-height: 1.666vw;
   background-color: transparent;
   letter-spacing: -0.003em;
 
@@ -22,15 +22,15 @@
 }
 
 .register_finish {
-  width: 278px;
-  height: 52px;
+  width: 19.305vw;
+  height: 3.611vw;
   background: #580ea2;
-  border-radius: 6px;
+  border-radius: 0.416vw;
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.25vw;
+  line-height: 1.666vw;
 
   letter-spacing: -0.003em;
 
@@ -46,15 +46,15 @@
 }
 
 .entry {
-  width: 278px;
-  height: 52px;
+  width: 19.305vw;
+  height: 3.611vw;
   background: #580ea2;
-  border-radius: 6px;
+  border-radius: 0.416vw;
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.25vw;
+  line-height: 1.666vw;
 
   letter-spacing: -0.003em;
 
@@ -66,5 +66,64 @@
   }
   &:active {
     background: #271a58;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .register_start {
+    width: 32.176vw;
+    height: 6.019vw;
+    border: 0.0694vw solid #d0cece;
+    border-radius: 0.694vw;
+
+    font-size: 2.083vw;
+    line-height: 2.778vw;
+  }
+
+  .register_finish {
+    width: 32.176vw;
+    height: 6.019vw;
+    border-radius: 0.694vw;
+
+    font-size: 2.083vw;
+    line-height: 2.778vw;
+  }
+
+  .entry {
+    width: 32.176vw;
+    height: 6.019vw;
+    border-radius: 0.694vw;
+
+    font-size: 2.083vw;
+    line-height: 2.778vw;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .register_start {
+    width: 52.176vw;
+    height: 7.704vw;
+    border: 0.0694vw solid #d0cece;
+    border-radius: 0.694vw;
+
+    font-size: 4.083vw;
+    line-height: 4.778vw;
+  }
+
+  .register_finish {
+    width: 52.176vw;
+    height: 7.704vw;
+    border-radius: 0.694vw;
+
+    font-size: 4.083vw;
+    line-height: 4.778vw;
+  }
+
+  .entry {
+    width: 52.176vw;
+    height: 7.704vw;
+    border-radius: 0.694vw;
+    font-size: 4.083vw;
+    line-height: 4.778vw;
   }
 }

@@ -1,4 +1,4 @@
-import s from "./Progress.module.scss";
+import s from "./VolumeProgress.module.scss";
 
 export default function Progress() {
   return (

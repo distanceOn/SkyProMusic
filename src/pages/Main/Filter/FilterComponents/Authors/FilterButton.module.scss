@@ -1,11 +1,12 @@
 .container {
-  margin-top: 20px;
+  margin-top: 1.388vw;
   position: absolute;
-  width: 248px;
-  height: 305px;
+  width: 15.222vw;
+  height: 14.7vw;
   background: #313131;
-  border-radius: 12px;
+  border-radius: 0.833vw;
   box-sizing: border-box;
+  padding: 1.042vw;
 }
 
 li button {
@@ -13,48 +14,51 @@ li button {
   border: none;
 }
 .authors {
+  margin: 0;
+  text-align: center;
+  padding: 0.3vw;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 1.944vw;
 
-  width: 180px;
-  height: 237px;
+  width: 12.5vw;
+  height: 11.458vw;
 
   &::-webkit-scrollbar {
-    width: 4px;
-    height: 65px;
+    width: 0.277vw;
+    height: 4.514vw;
     background-color: #4b4949;
   }
   &::-webkit-scrollbar-thumb {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 0.694vw;
   }
   &::-moz-scrollbar {
-    width: 4px;
-    height: 65px;
+    width: 0.277vw;
+    height: 4.514vw;
     background-color: #4b4949;
   }
   &::-moz-scrollbar-thumb {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 0.694vw;
   }
   &::-ms-scrollbar {
-    width: 4px;
-    height: 65px;
+    width: 0.277vw;
+    height: 4.514vw;
     background-color: #4b4949;
   }
   &::-ms-scrollbar-thumb {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 0.277vw;
   }
 }
 .author {
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.388vw;
+  line-height: 1.666vw;
   cursor: pointer;
 
   color: #ffffff;
@@ -63,8 +67,8 @@ li button {
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.388vw;
+  line-height: 1.666vw;
   text-decoration-line: underline;
   cursor: pointer;
 

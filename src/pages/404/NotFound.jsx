@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import s from "./NotFound.module.scss";
-import Smile from "./Smile/crying-emoji-svgrepo-com.svg";
+import Smile from "./NotFoundSmile/crying-emoji-svgrepo-com.svg";
 
 export default function NotFound() {
   return (

@@ -1,6 +1,6 @@
-import s from "./Button.module.scss";
+import s from "./FilterButton.module.scss";
 
-export default function Button(props) {
+export default function FilterButton(props) {
   return (
     <button
       type="button"

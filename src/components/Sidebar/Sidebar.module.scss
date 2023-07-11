@@ -1,34 +1,43 @@
 .sidebar {
-  max-width: 418px;
-  padding: 36px 91px 0px 0px;
+  width: fit-content;
+  height: 100vh;
+  padding-top: 2vw;
+  padding-right: 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 16vh;
   &__block {
-    height: 100%;
-    padding: 240px 0 0 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
   }
   &__list {
     display: flex;
+    height: 50vh;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 5vh;
   }
 }
+
+.link {
+  align-self: flex-end;
+}
+
 .logout {
-  margin-left: 210px;
-  width: 40px;
-  height: 40px;
+  width: 2.777vw;
+  height: 2.777vw;
   cursor: pointer;
   background-color: transparent;
   border: none;
 }
 
 .item {
-  width: 250px;
-  height: 150px;
+  width: 13.361vw;
+  height: 8.416vw;
   &:not(:last-child) {
-    margin-bottom: 30px;
+    margin-bottom: 2.083vw;
   }
 }
 

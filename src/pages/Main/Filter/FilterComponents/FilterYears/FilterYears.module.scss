@@ -1,33 +1,32 @@
 .container {
-  margin-top: 20px;
+  margin-top: 1.388vw;
 
   display: flex;
-  padding: 34px;
+  padding: 1.361vw;
 
   position: absolute;
-  width: 403px;
-  height: 92px;
+  width: 23.5vw;
 
   background: #313131;
-  border-radius: 12px;
+  border-radius: 0.833vw;
 }
 
 .inputs {
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 1.666vw;
 
-  width: 335px;
-  height: 24px;
+  width: 23.263vw;
+  height: 1.666vw;
 }
 .input {
   align-items: center;
   display: flex;
-  gap: 10px;
+  gap: 0.694vw;
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.388vw;
+  line-height: 1.666vw;
   cursor: pointer;
 
   color: #ffffff;

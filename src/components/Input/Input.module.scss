@@ -1,20 +1,57 @@
 .input {
-  width: 278px;
-  height: 32px;
+  width: 19.305vw;
+  height: 2.222vw;
   box-sizing: border-box;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.25vw;
+  line-height: 1.666vw;
 
+  letter-spacing: -0.003em;
   outline: none;
   border: none;
-  border-bottom: 1px solid #d0cece;
+  border-bottom: 0.0694vw solid #d0cece;
   &::placeholder {
     font-family: "StratosSkyeng";
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 1.25vw;
+    line-height: 1.666vw;
 
     letter-spacing: -0.003em;
 
     color: #e1e1e1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .input {
+    width: 32.176vw;
+    height: 3.704vw;
+    font-size: 2.083vw;
+    line-height: 2.778vw;
+
+    border-bottom: 0.116vw solid #d0cece;
+    &::placeholder {
+      font-size: 2.083vw;
+      line-height: 2.778vw;
+    }
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .input {
+    width: 52.176vw;
+    height: 7.704vw;
+
+    font-size: 4.083vw;
+    line-height: 4.778vw;
+
+    border-bottom: 0.2vw solid #d0cece;
+    &::placeholder {
+      font-size: 4.083vw;
+      line-height: 4.778vw;
+    }
   }
 }
