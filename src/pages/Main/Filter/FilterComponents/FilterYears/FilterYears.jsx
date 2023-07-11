@@ -1,4 +1,4 @@
-import s from "./Years.module.scss";
+import s from "./FilterYears.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getYearsState,
@@ -6,7 +6,7 @@ import {
 } from "../../../../../redux/slices/filterSlice";
 import { useEffect, useState } from "react";
 
-export default function Years() {
+export default function FilterYears() {
   const dispatch = useDispatch();
   const dateSelectionData = useSelector(getYearsState);
 

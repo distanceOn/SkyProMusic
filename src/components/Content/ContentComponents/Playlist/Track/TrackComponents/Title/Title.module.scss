@@ -6,31 +6,31 @@
   &__link {
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1.111vw;
+    line-height: 1.666vw;
     color: #ffffff;
     cursor: default;
   }
   &__span {
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1.111vw;
+    line-height: 1.666vw;
     color: #4e4e4e;
   }
 }
 .image {
-  width: 51px;
-  height: 51px;
+  width: 3.541vw;
+  height: 3.541vw;
   background: #313131;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 17px;
+  margin-right: 1.18vw;
 }
 .svg {
-  width: 18px;
-  height: 17px;
+  width: 1.25vw;
+  height: 1.18vw;
   fill: transparent;
   stroke: #4e4e4e;
 }

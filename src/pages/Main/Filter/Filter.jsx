@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Button from "./FilterComponents/Button/Button";
-import Title from "./FilterComponents/Title/Title";
-import Authors from "./FilterComponents/Authors/Authors";
+import Button from "./FilterComponents/FilterButton/FilterButton";
+import FilterTitle from "./FilterComponents/FilterTitle/FilterTitle";
+import Authors from "./FilterComponents/Authors/FilterButton";
 import s from "./Filter.module.scss";
-import Years from "./FilterComponents/Years/Years";
+import FilterYears from "./FilterComponents/FilterYears/FilterYears";
 import Genres from "./FilterComponents/Genres/Genres";
 import { useSelector } from "react-redux";
 import { getTracks } from "../../../redux/slices/tracksSlice";
@@ -73,7 +73,7 @@ export default function Filter() {
 
   return (
     <div className={s.filter}>
-      <Title />
+      <FilterTitle />
       <div className={s.container}>
         <Button
           active={isFilterAuthorsOpen ? true : ""}
@@ -88,7 +88,7 @@ export default function Filter() {
           filter="году выпуска"
           onClick={toggleFilterYearsClick}
         />{" "}
-        {isFilterYearsOpen && <Years />}
+        {isFilterYearsOpen && <FilterYears />}
       </div>
       <div className={s.container}>
         <Button

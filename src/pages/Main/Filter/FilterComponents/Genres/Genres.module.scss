@@ -1,65 +1,38 @@
 .container {
-  margin-top: 20px;
+  margin-top: 1.388vw;
   position: absolute;
-  width: 248px;
-  height: 305px;
+  width: 14.5vw;
+  height: 13.458vw;
   background: #313131;
-  border-radius: 12px;
+  border-radius: 0.833vw;
   box-sizing: border-box;
 }
 
 .authors {
-  overflow-y: scroll;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 1.944vw;
+  padding: 1.041vw;
 
-  width: 180px;
-  height: 237px;
-
-  &::-webkit-scrollbar {
-    width: 4px;
-    height: 65px;
-    background-color: #4b4949;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #ffffff;
-    border-radius: 10px;
-  }
-  &::-moz-scrollbar {
-    width: 4px;
-    height: 65px;
-    background-color: #4b4949;
-  }
-  &::-moz-scrollbar-thumb {
-    background-color: #ffffff;
-    border-radius: 10px;
-  }
-  &::-ms-scrollbar {
-    width: 4px;
-    height: 65px;
-    background-color: #4b4949;
-  }
-  &::-ms-scrollbar-thumb {
-    background-color: #ffffff;
-    border-radius: 10px;
-  }
+  width: 12.5vw;
+  height: 11.458vw;
 }
 
 .author {
+  text-align: center;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.388vw;
+  line-height: 1.388vw;
   cursor: pointer;
 
   color: #ffffff;
 }
 .active {
-  font-family: "StratosSkyeng";
-  font-style: normal;
+  text-align: center;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.388vw;
+  line-height: 1.388vw;
   text-decoration-line: underline;
   cursor: pointer;
 

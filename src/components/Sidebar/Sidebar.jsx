@@ -45,7 +45,7 @@ export default function Sidebar(props) {
 
   return (
     <div className={s.sidebar}>
-      <NavLink onClick={handleLogout} to="/login">
+      <NavLink onClick={handleLogout} to="/login" className={s.link}>
         <button className={s.logout} type="button">
           <Logout />
         </button>

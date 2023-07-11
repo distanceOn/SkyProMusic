@@ -1,25 +1,18 @@
-.wrapper {
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  background-color: #383838;
-}
-
 .container {
-  max-width: 1920px;
+  width: 100vw;
+  overflow: hidden;
   height: 100vh;
-  margin: 0 auto;
-  position: relative;
   background-color: #181818;
 }
 
 .main {
-  flex: 1 1 auto;
+  height: 100vh;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   &__centerblock {
-    width: auto;
-    flex-grow: 3;
-    padding: 20px 40px 87px 111px;
+    width: 54.048vw;
+    height: 83%;
+    padding: 1.388vw 0 15vh 0;
   }
 }

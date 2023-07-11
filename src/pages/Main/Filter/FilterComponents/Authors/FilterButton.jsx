@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import s from "./Authors.module.scss";
+import s from "./FilterButton.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAuthorState,
@@ -8,7 +8,7 @@ import {
   setSelectionAuthorState,
 } from "../../../../../redux/slices/filterSlice";
 
-export default function Authors(props) {
+export default function FilterButton(props) {
   const isActiveData = useSelector(getSelectionAuthorState);
 
   const [isActive, setIsActive] = useState(null);

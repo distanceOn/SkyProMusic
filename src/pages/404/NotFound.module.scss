@@ -1,13 +1,7 @@
-.wrapper {
-  width: 100%;
-  min-height: 100%;
-  background-color: #383838;
-}
-
 .container {
-  max-width: 1920px;
+  width: 100vw;
+  overflow: hidden;
   height: 100vh;
-  position: relative;
   background-color: #181818;
   display: flex;
   justify-content: center;
@@ -23,76 +17,76 @@
 
 ._404 {
   cursor: default;
-  height: 200px;
+  height: 13.888vw;
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 160px;
+  font-size: 11.111vw;
 
   color: #ffffff;
   margin: 0;
-  margin-bottom: 3px;
+  margin-bottom: 0.208vw;
 }
 
 .div {
   cursor: default;
-  height: 52px;
+  height: 3.611vw;
   display: flex;
-  gap: 8px;
+  gap: 0.555vw;
   align-items: center;
 
-  margin-bottom: 19px;
+  margin-bottom: 1.319vw;
 }
 .p {
   cursor: default;
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 2.222vw;
+  line-height: 2.777vw;
   margin: 0;
 
   color: #ffffff;
 }
 
 .smile {
-  width: 52px;
-  height: 52px;
+  width: 3.611vw;
+  height: 3.611vw;
 }
 
 .text {
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.25vw;
+  line-height: 1.666vw;
   margin: 0;
   text-align: center;
   letter-spacing: -0.003em;
 
   color: #4e4e4e;
 
-  margin-bottom: 36px;
+  margin-bottom: 2.5vw;
 }
 
 .button {
-  width: 278px;
-  height: 52px;
+  width: 19.305vw;
+  height: 3.611vw;
   font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.25vw;
+  line-height: 1.666vw;
 
   letter-spacing: -0.003em;
 
   color: #ffffff;
   background: #580ea2;
-  border-radius: 6px;
+  border-radius: 0.416vw;
   outline: none;
   border: transparent;
   transition: all 0.2s;
   &:hover {
-    box-shadow: 0 0 10px 8px rgba(247, 201, 0, 0.2);
+    box-shadow: 0 0 0.694vw 0.555vw rgba(247, 201, 0, 0.2);
   }
 }
