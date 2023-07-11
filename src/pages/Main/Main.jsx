@@ -120,20 +120,18 @@ export default function Main() {
   };
 
   return (
-    <div className={s.wrapper}>
-      <div className={s.container}>
-        <div className={s.main}>
-          <Nav />
-          <div className={s.main__centerblock}>
-            <Search />
-            <Header value="Треки" />
-            <Filter />
-            {showContent()}
-          </div>
-          <Sidebar playlists />
+    <div className={s.container}>
+      <div className={s.main}>
+        <Nav />
+        <div className={s.main__centerblock}>
+          <Search />
+          <Header value="Треки" />
+          <Filter />
+          {showContent()}
         </div>
-        <Bar />
+        <Sidebar playlists />
       </div>
+      <Bar />
     </div>
   );
 }

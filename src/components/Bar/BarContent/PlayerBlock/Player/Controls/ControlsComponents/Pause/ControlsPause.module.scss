@@ -1,13 +1,14 @@
 .pause {
-  padding: 5px;
+  padding: 0.3472vw;
+
   display: flex;
   align-items: center;
-  margin-right: 23px;
+  margin-right: 1.597vw;
   background-color: transparent;
   border: none;
   &__svg {
-    width: 22px;
-    height: 20px;
+    width: 1.5277vw;
+    height: 1.388vw;
     fill: #d9d9d9;
   }
 }
