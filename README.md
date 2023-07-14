@@ -2,7 +2,7 @@
 
 Реализация музыкального сервиса, аналогичного «Яндекс.Музыке».
 
-## [Ссылка на сайт](https://distanceon.site/)
+## [Ссылка на сайт](https://main--sky-music.netlify.app/)
 Данные для теста: 
 логин: myskymusic@mail.ru
 пароль: myskymusic23
